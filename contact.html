@@ -1541,21 +1541,152 @@
                     }
 
                     if (isValid) {
-                        // Form is valid - hide form and show success message
-                        const formContainer = document.getElementById('letsTalkFormContainer');
-                        const successMessage = document.getElementById('letsTalkSuccessMessage');
-                        
-                        // Hide form with smooth transition
-                        formContainer.classList.add('contact-form-hidden');
-                        
-                        // Show success message after form is hidden
-                        setTimeout(() => {
-                            formContainer.style.display = 'none';
-                            successMessage.style.display = 'block';
-                            successMessage.classList.add('contact-success-message-show');
-                        }, 300);
+                        // Show loading state
+                        const submitButton = letsTalkForm.querySelector('.btn-consultation');
+                        const originalButtonText = submitButton.textContent;
+                        submitButton.textContent = 'Sending...';
+                        submitButton.disabled = true;
+
+                        // Prepare form data
+                        const formData = {
+                            name: contactNameField.value.trim(),
+                            company: companyNameField.value.trim(),
+                            email: contactEmailField.value.trim(),
+                            phone: contactPhoneField.value.trim(),
+                            message: messageField.value.trim(),
+                            timestamp: new Date().toISOString(),
+                            source: 'Website Contact Form'
+                        };
+
+                        // Send to Slack
+                        sendToSlack(formData)
+                            .then(() => {
+                                // Success - hide form and show success message
+                                const formContainer = document.getElementById('letsTalkFormContainer');
+                                const successMessage = document.getElementById('letsTalkSuccessMessage');
+                                
+                                // Hide form with smooth transition
+                                formContainer.classList.add('contact-form-hidden');
+                                
+                                // Show success message after form is hidden
+                                setTimeout(() => {
+                                    formContainer.style.display = 'none';
+                                    successMessage.style.display = 'block';
+                                    successMessage.classList.add('contact-success-message-show');
+                                }, 300);
+                            })
+                            .catch((error) => {
+                                console.error('Error sending to Slack:', error);
+                                // Still show success message to user even if Slack fails
+                                const formContainer = document.getElementById('letsTalkFormContainer');
+                                const successMessage = document.getElementById('letsTalkSuccessMessage');
+                                
+                                formContainer.classList.add('contact-form-hidden');
+                                
+                                setTimeout(() => {
+                                    formContainer.style.display = 'none';
+                                    successMessage.style.display = 'block';
+                                    successMessage.classList.add('contact-success-message-show');
+                                }, 300);
+                            })
+                            .finally(() => {
+                                // Reset button
+                                submitButton.textContent = originalButtonText;
+                                submitButton.disabled = false;
+                            });
                     }
                 });
+            }
+
+            // Slack Integration Function
+            async function sendToSlack(formData) {
+                // Slack webhook URL
+                const SLACK_WEBHOOK_URL = 'https://hooks.slack.com/services/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';
+
+                // Sanitize data to prevent Slack formatting issues
+                const sanitizeText = (text) => {
+                    if (!text) return 'Not provided';
+                    return text.replace(/[<>]/g, '').trim();
+                };
+
+                const slackMessage = {
+                    text: "🎉 *New Contact Form Submission*",
+                    blocks: [
+                        {
+                            type: "header",
+                            text: {
+                                type: "plain_text",
+                                text: "New Contact Form Submission",
+                                emoji: true
+                            }
+                        },
+                        {
+                            type: "section",
+                            fields: [
+                                {
+                                    type: "mrkdwn",
+                                    text: `*Name:*\n${sanitizeText(formData.name)}`
+                                },
+                                {
+                                    type: "mrkdwn",
+                                    text: `*Email:*\n${sanitizeText(formData.email)}`
+                                },
+                                {
+                                    type: "mrkdwn",
+                                    text: `*Company:*\n${sanitizeText(formData.company)}`
+                                },
+                                {
+                                    type: "mrkdwn",
+                                    text: `*Phone:*\n${sanitizeText(formData.phone)}`
+                                }
+                            ]
+                        },
+                        {
+                            type: "section",
+                            text: {
+                                type: "mrkdwn",
+                                text: `*Message:*\n${sanitizeText(formData.message)}`
+                            }
+                        },
+                        {
+                            type: "context",
+                            elements: [
+                                {
+                                    type: "mrkdwn",
+                                    text: `📅 Submitted on ${new Date().toLocaleString()} | 🌐 Source: ${formData.source}`
+                                }
+                            ]
+                        }
+                    ]
+                };
+
+                try {
+                    console.log('Attempting to send to Slack:', formData);
+                    
+                    const response = await fetch(SLACK_WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(slackMessage)
+                    });
+
+                    console.log('Slack response status:', response.status);
+                    console.log('Slack response ok:', response.ok);
+
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error('Slack error response:', errorText);
+                        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+                    }
+
+                    console.log('Successfully sent to Slack');
+                    return response;
+                } catch (error) {
+                    console.error('Error sending to Slack:', error);
+                    // Don't throw error to prevent form from failing
+                    return Promise.resolve();
+                }
             }
         });
     </script>
