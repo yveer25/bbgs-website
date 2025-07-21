@@ -103,6 +103,12 @@
             color: #63c6c5 !important;
         }
 
+        /* Active state for Contact Form Entries page */
+        body.contact-entries .site-nav > ul > li > a[href="contact-form-entries.html"],
+        body.contact-entries .off-canvas-nav > ul > li > a[href="contact-form-entries.html"] {
+            color: #63c6c5 !important;
+        }
+
         /* Search and Menu Icons Hover */
         .header-toggle a.toggle {
             transition: all 0.3s ease !important;
@@ -924,6 +930,7 @@
                                         <li><a href="about.html">About</a></li>
                                         <li><a href="services.html">Services</a></li>
                                         <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="contact-form-entries.html">Form Entries</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -982,6 +989,7 @@
                             <li><a href="about.html">About</a></li>
                             <li><a href="services.html">Services</a></li>
                             <li><a href="contact.html">Contact</a></li>
+                            <li><a href="contact-form-entries.html">Form Entries</a></li>
                         </ul>
                     </nav>
                     <!--Off Canvas Navigation End-->
@@ -1265,7 +1273,8 @@
                                     <li style="margin-bottom: 15px;"><a href="index.html">Home</a></li>
                                     <li style="margin-bottom: 15px;"><a href="about.html">About</a></li>
                                     <li style="margin-bottom: 15px;"><a href="services.html">Services</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li style="margin-bottom: 15px;"><a href="contact.html">Contact</a></li>
+                                    <li><a href="contact-form-entries.html">Form Entries</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1541,6 +1550,21 @@
                     }
 
                     if (isValid) {
+                        // Save form entry to localStorage
+                        const formEntry = {
+                            name: contactNameField.value.trim(),
+                            company: companyNameField.value.trim(),
+                            email: contactEmailField.value.trim(),
+                            phone: contactPhoneField.value.trim(),
+                            message: messageField.value.trim(),
+                            timestamp: new Date().toISOString()
+                        };
+
+                        // Get existing entries or create empty array
+                        const existingEntries = JSON.parse(localStorage.getItem('contactFormEntries') || '[]');
+                        existingEntries.push(formEntry);
+                        localStorage.setItem('contactFormEntries', JSON.stringify(existingEntries));
+
                         // Form is valid - hide form and show success message
                         const formContainer = document.getElementById('letsTalkFormContainer');
                         const successMessage = document.getElementById('letsTalkSuccessMessage');
