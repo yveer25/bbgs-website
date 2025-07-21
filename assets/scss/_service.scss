@@ -1,0 +1,112 @@
+/*----------------------------------------*/
+/*  06. Service CSS
+/*----------------------------------------*/
+.service-wrap {
+    margin-bottom: -50px;
+}
+
+/*Service*/
+.service {
+    margin-bottom: 50px;
+    display: flex;
+    & .inner {
+        text-align: left;
+        // Head
+        & .head {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            & .icon {
+                width: 70px;
+                color: $primary;
+                & i {
+                    display: block;
+                    font-size: 45px;
+                    line-height: 1;
+                }
+            }
+            & .title {
+                align-self: center;
+                & h3 {
+                    margin: 0;
+                }
+            }
+        }
+        // Content
+        & .content {
+            width: 100%;
+            & p {
+                font-size: 19px;
+            }
+        }
+    }
+    // Responsive
+    @media #{$large-mobile} {
+        justify-content: center;
+    }
+}
+
+/*Single Service Wrapper*/
+.single-service-wrap {
+    margin-bottom: -50px;
+}
+
+/*Service Sidebars*/
+.service-sidebars {
+    margin-bottom: 50px;
+}
+
+/*Single Service*/
+.single-service {
+    margin-bottom: 50px;
+    & .inner {
+        & .image, & .images {
+            position: relative;
+            margin-bottom: 30px;
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
+            & img {
+                width: 100%;
+            }
+            &.primary-image {
+                & i {
+                    position: absolute;
+                    left: 20px;
+                    bottom: 20px;
+                    display: block;
+                    background-color: $primary;
+                    color: $white;
+                    font-size: 30px;
+                    padding: 15px;
+                    z-index: 99;
+                }
+            }
+        }
+        & .images {
+            margin-bottom: -5px;
+            & > [class*="col-"] {
+                margin-bottom: 30px;
+            }
+            &:last-child {
+                margin-bottom: -30px !important;
+            }
+        }
+        & .embed-responsive {
+            margin-bottom: 25px;
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+        & .title {
+            margin-bottom: 20px;
+        }
+        & .desc {
+            margin-bottom: 30px;
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
+            & p {}
+        }
+    }
+}

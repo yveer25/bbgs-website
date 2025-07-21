@@ -1,0 +1,27 @@
+/*----------------------------------------*/
+/*  15. Widget CSS
+/*----------------------------------------*/
+
+/*Footer Widget Wrapper*/
+.footer-widget-wrap {
+    margin-bottom: -40px;
+}
+
+/*Footer Widget*/
+.footer-widget {
+    color: rgba($white, 0.75);
+    margin-bottom: 40px;
+    & .inner {}
+}
+
+/*Footer Copyright*/
+.copyright {
+    color: rgba($white, 0.75);
+    font-size: 14px;
+}
+
+.heart-icon {
+    color: #db1a48;
+    margin: 0 4px;
+    font-size: 13px;
+}

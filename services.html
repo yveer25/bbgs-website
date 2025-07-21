@@ -1,0 +1,1127 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Beyond Books Global Solutions</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+
+    <!-- CSS
+	============================================ -->
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/fnions.css">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/animate.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/slick.css">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/mobile-footer.css"><link rel="stylesheet" href="assets/css/mobile-footer.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        /* Logo Size and Padding */
+        .header-logo img {
+            width: 330px !important; /* Medium logo size */
+            padding: 7px 0 !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        /* Smaller Logo on Scroll */
+        .is-sticky .header-logo img {
+            width: 45% !important; /* Reduced by 55% */
+            padding: 7px 0 !important;
+        }
+        
+        /* Initial Menu Margin */
+        @media only screen and (min-width: 992px) {
+            .site-nav > ul {
+                margin-top: 4px !important;
+                transition: all 0.3s ease !important;
+            }
+        }
+        
+        /* Menu Margin Adjustment on Scroll */
+        .is-sticky .site-nav > ul {
+            margin-top: 9px !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        /* Scroll to Top Button Hover */
+        .scroll-to-top:hover {
+            background-color: #63c6c5 !important;
+            color: #ffffff !important;
+        }
+        
+        /* Header Menu Top Margin - Desktop Only */
+        @media only screen and (min-width: 992px) {
+            .site-nav > ul {
+                margin-top: 22px !important;
+            }
+        }
+
+        /* Menu Styling */
+        .site-nav > ul > li > a,
+        .off-canvas-nav > ul > li > a {
+            transition: color 0.3s ease !important;
+        }
+
+        .site-nav > ul > li > a:hover,
+        .off-canvas-nav > ul > li > a:hover {
+            color: #63c6c5 !important;
+        }
+
+        /* Active state for Home page */
+        body.home .site-nav > ul > li > a[href="index.html"],
+        body.home .off-canvas-nav > ul > li > a[href="index.html"] {
+            color: #63c6c5 !important;
+        }
+
+        /* Active state for About page */
+        body.about .site-nav > ul > li > a[href="about.html"],
+        body.about .off-canvas-nav > ul > li > a[href="about.html"] {
+            color: #63c6c5 !important;
+        }
+
+        /* Active state for Services page */
+        body.services .site-nav > ul > li > a[href="services.html"],
+        body.services .off-canvas-nav > ul > li > a[href="services.html"] {
+            color: #63c6c5 !important;
+        }
+
+        /* Active state for Contact page */
+        body.contact .site-nav > ul > li > a[href="contact.html"],
+        body.contact .off-canvas-nav > ul > li > a[href="contact.html"] {
+            color: #63c6c5 !important;
+        }
+
+        /* Search and Menu Icons Hover */
+        .header-toggle a.toggle {
+            transition: all 0.3s ease !important;
+        }
+        
+        .header-toggle a.toggle i {
+            transition: color 0.3s ease !important;
+        }
+        
+        .header-toggle a.toggle:hover i.fnions-search {
+            color: #63c6c5 !important;
+        }
+        
+        .header-toggle a.toggle:hover i.fnions-close {
+            color: #63c6c5 !important;
+        }
+
+        /* Hamburger Menu Hover */
+        .header-toggle .toggle-off-canvas .toggle {
+            transition: all 0.3s ease !important;
+        }
+        
+        .header-toggle .toggle-off-canvas .toggle .bar {
+            transition: background-color 0.3s ease !important;
+        }
+        
+        .header-toggle .toggle-off-canvas .toggle:hover .bar {
+            background-color: #63c6c5 !important;
+        }
+
+        /* Footer and Mega Menu Hover Styles */
+        /* Links */
+        .footer-widget a:hover,
+        .off-canvas-nav a:hover,
+        .widget-list a:hover {
+            color: #63c6c5 !important;
+            transition: all 0.3s ease;
+        }
+
+        /* Contact Info - Phone Numbers and Email Only */
+        .widget-contact a[href^="tel:"]:hover,
+        .widget-contact a[href^="mailto:"]:hover,
+        .off-canvas-nav .widget-contact a[href^="tel:"]:hover,
+        .off-canvas-nav .widget-contact a[href^="mailto:"]:hover {
+            color: #63c6c5 !important;
+            transition: all 0.3s ease;
+        }
+
+        /* Social Icons - Footer */
+        .footer-widget .widget-social {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-widget .widget-social a {
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .footer-widget .widget-social a i {
+            font-size: 30px !important;
+        }
+
+        /* Mobile social media icons size increase */
+        @media (max-width: 767px) {
+            .footer-widget .widget-social a i {
+                font-size: 48px !important;
+            }
+        }
+
+        .footer-widget .widget-social a:hover {
+            opacity: 1;
+            color: #63c6c5 !important;
+        }
+
+        /* Social Icons - Mega Menu */
+        .off-canvas-nav .widget-social a {
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .off-canvas-nav .widget-social a:hover {
+            opacity: 1;
+            color: #63c6c5 !important;
+        }
+
+        /* LinkedIn Icon Always Visible */
+        .footer-widget .widget-social a[href*="linkedin"],
+        .off-canvas-nav .widget-social a[href*="linkedin"] {
+            opacity: 1;
+        }
+
+        /* Navigation Links */
+        .widget-list ul li a:hover {
+            color: #63c6c5 !important;
+            padding-left: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Social Media Icons - Mega Menu */
+        .sidebar-widget-social a {
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-widget-social a:hover {
+            color: #63c6c5 !important;
+            transform: translateY(-3px);
+        }
+        
+        .sidebar-widget-social a.facebook,
+        .sidebar-widget-social a.twitter,
+        .sidebar-widget-social a.instagram {
+            opacity: 0.5;
+        }
+        
+        .sidebar-widget-social a.linkedin {
+            opacity: 1;
+        }
+        
+        .sidebar-widget-social a:hover {
+            opacity: 1;
+        }
+        
+        /* Timeline Design Styles */
+        .services-timeline-wrap {
+            position: relative;
+            padding: 40px 0;
+            overflow-x: hidden;
+        }
+        .services-timeline-wrap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, #63c6c5, #4ab5b4);
+            border-radius: 2px;
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 10px 40px;
+            margin-bottom: 40px;
+            opacity: 0;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            transform: translateX(-30px);
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            transform: translateX(30px);
+        }
+        .timeline-item.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12.5px;
+            background-color: #ffffff;
+            border: 4px solid #63c6c5;
+            top: 30px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        .timeline-item:nth-child(even)::after {
+            left: -12.5px;
+        }
+        .timeline-content {
+            padding: 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        .timeline-item:hover .timeline-content {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+            border-color: #63c6c5;
+        }
+        .timeline-item:hover::after {
+            transform: scale(1.2);
+            background-color: #63c6c5;
+        }
+        .timeline-icon {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #63c6c5, #4ab5b4);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 0 0 5px white;
+        }
+        .timeline-content h3 {
+            margin-top: 30px;
+            font-size: 25px;
+            font-weight: 700;
+            color: #2c3e50;
+            text-align: left;
+        }
+        .timeline-content p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #666;
+        }
+        
+        .property-details-timeline {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease-out;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .property-details-timeline h4 {
+            font-size: 20px;
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .property-details-timeline p {
+            font-size: 20px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .read-more-btn-timeline {
+            display: inline-block;
+            margin-top: 15px;
+            color: #63c6c5;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .read-more-btn-timeline:hover {
+            color: #4ab5b4;
+        }
+        .read-more-btn-timeline i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        @media (max-width: 767px) {
+            .services-timeline-wrap::before {
+                left: 20px !important;
+                transform: translateX(0) !important;
+            }
+            .timeline-item, .timeline-item:nth-child(even) {
+                left: 0 !important;
+                width: 100% !important;
+                padding-left: 55px !important;
+                padding-right: 15px !important;
+                transform: none !important;
+                opacity: 1 !important;
+                transition: none !important;
+            }
+            .timeline-item.is-visible {
+                transform: none !important;
+            }
+            .timeline-item::after, .timeline-item:nth-child(even)::after {
+                left: 7.5px !important;
+                right: auto !important;
+            }
+            .timeline-content {
+                background-color: white !important;
+                border-radius: 12px !important;
+                box-shadow: 0 5px 25px rgba(0,0,0,0.07) !important;
+                border: 1px solid #e9ecef !important;
+                padding: 30px !important;
+            }
+             .service-list-item {
+                 flex-direction: column;
+                 align-items: flex-start;
+                 text-align: left;
+             }
+             .service-list-icon {
+                 margin-right: 0;
+                 margin-bottom: 20px;
+             }
+           
+           /* Footer Mobile View Improvements */
+            /* 1. Increase width of company description text - better utilization of space */
+            .footer-widget .widget-about p {
+                padding-right: 0 !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                text-align: justify !important;
+                word-wrap: break-word !important;
+                hyphens: auto !important;
+            }
+            
+            /* Ensure the first footer widget uses full available width */
+            .footer-widget:first-child {
+                padding-right: 10px !important;
+            }
+            
+            .footer-widget:first-child .inner {
+                padding-right: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            /* 2. Add margin top to Quick Links heading */
+            .footer-widget .widget-title {
+                margin-top: 15px !important;
+            }
+            
+            /* 3. Increase Quick Links heading size */
+            .footer-widget .widget-title {
+                font-size: calc(1.25rem + 10px) !important;
+            }
+            
+            /* 4. Increase navigation links size */
+            .footer-widget .widget-list ul li a {
+                font-size: calc(1rem + 3px) !important;
+            }
+            
+            /* 5. Increase Contact Us heading size */
+            .footer-widget .widget-title {
+                font-size: calc(1.25rem + 10px) !important;
+            }
+            
+            /* 6. Increase Contact Us content sizes */
+            .footer-widget .widget-contact ul li .icon i {
+                font-size: calc(1.5rem + 3px) !important;
+            }
+            
+            .footer-widget .widget-contact ul li .info {
+                font-size: calc(1rem + 3px) !important;
+                line-height: 1.6 !important;
+            }
+            
+            .footer-widget .widget-contact ul li .info a {
+                font-size: calc(1rem + 3px) !important;
+            }
+            
+            .footer-widget .widget-contact ul li .info strong {
+                font-size: calc(1rem + 4px) !important;
+            }
+            
+            /* 7. Remove left padding from Quick Links and Contact Us columns */
+            .footer-widget[style*="padding-left"] {
+                padding-left: 0 !important;
+            }
+            
+            .footer-widget h3[style*="padding-left"] {
+                padding-left: 0 !important;
+            }
+            
+            .footer-widget .widget-list[style*="padding-left"] {
+                padding-left: 0 !important;
+            }
+            
+            .footer-widget .widget-list ul[style*="padding-left"] {
+                padding-left: 0 !important;
+            }
+            
+            .footer-widget .widget-contact[style*="padding-left"] {
+                padding-left: 0 !important;
+            }
+            
+            .footer-widget .widget-contact ul[style*="padding-left"] {
+                padding-left: 0 !important;
+            }
+            
+            /* Add 10% left padding to Quick Links and Contact Us columns */
+             .footer-widget .widget-list,
+             .footer-widget .widget-contact {
+                 padding-left: 10% !important;
+             }
+             
+            /* Improve social media icons spacing like Contact page */
+             .footer-widget .widget-social {
+                 display: flex !important;
+                 gap: 20px !important;
+             }
+             
+             .footer-widget .widget-social a {
+                 width: 60px !important;
+                 height: 60px !important;
+                 border-radius: 50% !important;
+                 display: flex !important;
+                 align-items: center !important;
+                 justify-content: center !important;
+                 text-decoration: none !important;
+                 transition: all 0.3s ease !important;
+                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+             }
+             
+             .footer-widget .widget-social a:hover {
+                 opacity: 1 !important;
+                 transform: translateY(-5px) !important;
+                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+             }
+             
+             .footer-widget .widget-social a i {
+                 font-size: 48px !important;
+             }
+             
+            /* Add 15px left padding to Quick Links and Contact Us headings */
+              .footer-widget:nth-child(2) .widget-title,
+              .footer-widget:nth-child(3) .widget-title {
+                  padding-left: 15px !important;
+              }
+              
+            /* Increase footer navigation links size in second column (Quick Links) */
+              .footer-widget:nth-child(2) .widget-list ul li a {
+                  font-size: calc(1rem + 8px) !important;
+              }
+
+              /* Page Banner heading size for mobile */
+              .page-title .title {
+                  font-size: calc(30px + 7px) !important;
+              }
+        }
+
+        /* Mobile Header Icon Alignment */
+        @media (max-width: 991px) {
+            .header-bottom .row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-bottom-left {
+                padding-bottom: 15px;
+            }
+            .header-bottom-right {
+                width: 100%;
+            }
+            .header-toggle-buttons {
+                display: flex;
+                justify-content: flex-end;
+                padding-right: 15px;
+            }
+        }
+        
+        /* Sticky Header Mobile Layout */
+        @media (max-width: 991px) {
+            .header.header-sticky.is-sticky {
+                position: fixed !important;
+                top: 0 !important;
+                width: 100% !important;
+                z-index: 9999 !important;
+                background: #fff !important;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .header.header-sticky.is-sticky .header-bottom {
+                padding: 12px 0 !important;
+            }
+            
+            .header.header-sticky.is-sticky .header-bottom .row {
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+            }
+            
+            .header.header-sticky.is-sticky .header-bottom-left {
+                padding-bottom: 0 !important;
+                flex: 0 0 auto !important;
+            }
+            
+            .header.header-sticky.is-sticky .header-logo img {
+                width: 200px !important;
+                height: auto !important;
+                max-height: 55px !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .header.header-sticky.is-sticky .header-bottom-right {
+                width: auto !important;
+                flex: 0 0 auto !important;
+            }
+            
+            .header.header-sticky.is-sticky .header-toggle-buttons {
+                display: flex !important;
+                align-items: center !important;
+                gap: 15px !important;
+                padding-right: 0 !important;
+                margin: 0 !important;
+            }
+            
+            .header.header-sticky.is-sticky .header-toggle {
+                margin: 0 !important;
+            }
+        }
+
+        /* Mobile Mega Menu Improvements */
+        .off-canvas-widget-wrap {
+            margin-top: 20px !important;
+            padding-top: 0 !important;
+        }
+        
+        /* Increase menu text size */
+        .off-canvas-nav ul li a {
+            font-size: calc(1rem + 6px) !important;
+        }
+        
+        /* Fix email cropping issue */
+        .off-canvas-widget-wrap .sidebar-widget.widget-contact ul li {
+            display: flex !important;
+            align-items: flex-start !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+        
+        .off-canvas-widget-wrap .sidebar-widget.widget-contact ul li .info {
+            flex: 1 !important;
+            min-width: 0 !important;
+            word-break: break-all !important;
+            overflow-wrap: break-word !important;
+        }
+        
+        /* Increase contact details visibility in mobile menu */
+        .off-canvas-widget-wrap .sidebar-widget.widget-contact ul li .icon i {
+            font-size: calc(1.5rem + 5px) !important;
+        }
+        
+        .off-canvas-widget-wrap .sidebar-widget.widget-contact ul li .info {
+            font-size: calc(1rem + 4px) !important;
+            line-height: 1.6 !important;
+        }
+        
+        .off-canvas-widget-wrap .sidebar-widget.widget-contact ul li .info strong {
+            font-size: calc(1rem + 5px) !important;
+            font-weight: 600 !important;
+        }
+        
+        .off-canvas-widget-wrap .sidebar-widget.widget-contact ul li .info a {
+            font-size: calc(1rem + 4px) !important;
+        }
+        
+        /* Reduce social media icons gap and improve visibility */
+        .off-canvas-widget-wrap .sidebar-widget-social {
+            display: flex !important;
+            gap: 10px !important;
+        }
+        
+        .off-canvas-widget-wrap .sidebar-widget-social a {
+            font-size: calc(30px + 5px) !important;
+            margin-right: 0 !important;
+        }
+
+        /* Hero Section Heading Size - Desktop Only */
+        @media only screen and (min-width: 992px) {
+            .page-banner .title {
+                font-size: calc(2.75rem + 4px) !important;
+            }
+        }
+
+        /* Breadcrumb Home Link Hover Color */
+        .page-breadcrumbs ul li a:hover {
+            color: #63c6c5 !important;
+        }
+
+        /* Search Popup Close Icon Hover Color */
+        .search-close:hover i.fnions-close {
+            color: #63c6c5 !important;
+        }
+        .search-close:hover {
+            color: #63c6c5 !important;
+        }
+    </style>
+
+<link rel="stylesheet" href="assets/css/mobile-footer.css"></head>
+
+<body class="services">
+
+    <div class="main-wrapper">
+
+        <!--Header Section Start-->
+        <header class="header header-sticky section">
+
+            <!--Header Bottom Start-->
+            <div class="header-bottom section">
+                <div class="container-fluid">
+
+                    <!--Header Bottom Inner Start-->
+                    <div class="row">
+
+                        <!--Header Logo (Left) Start-->
+                        <div class="col-auto header-logo header-bottom-left me-auto">
+                            <a href="index.html">
+                                <span class="logo-light"><img src="assets/images/logo/logo-light.png" alt="Fnions Logo"></span>
+                                <span class="logo-dark"><img src="assets/images/logo/logo.png" alt="Fnions Logo"></span>
+                            </a>
+                        </div>
+                        <!--Header Logo (Left) End-->
+
+                        <!--Header Right Start-->
+                        <div class="col-auto header-bottom-navigation header-bottom-middle d-none d-lg-block position-relative">
+
+                            <!--Site Main Menu Start-->
+                            <div class="site-main-navigation">
+                                <nav class="site-nav">
+                                    <ul>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="services.html">Services</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!--Site Main Menu End-->
+
+                            <!--Site Mobile Menu Start-->
+                            <div class="site-mobile-navigation d-block d-lg-none">
+                            </div>
+                            <!--Site Mobile Menu End-->
+
+                        </div>
+                        <!--Header Right End-->
+
+                        <!--Header Right Start-->
+                        <div class="col-auto header-bottom-right">
+
+                            <!--Header Toggle Buttons Start-->
+                            <div class="header-toggle-buttons">
+
+                                <div class="header-toggle toggle-off-canvas d-lg-none"><a class="toggle" href="#off-canvas" data-target="off-canvas"><span class="bar bar-1"></span><span class="bar bar-2"></span><span class="bar bar-3"></span></a></div>
+
+                            </div>
+                            <!--Header Toggle Buttons End-->
+
+                        </div>
+                        <!--Header Right End-->
+
+                    </div>
+                    <!--Header Bottom Inner End-->
+
+                </div>
+            </div>
+            <!--Header Bottom End-->
+
+        </header>
+        <!--Header Section End-->
+
+
+
+
+
+        <!--Off Canvas Start-->
+        <aside id="off-canvas" class="off-canvas">
+            <div class="off-canvas-wrap">
+
+                <!--Off Canvas Close Button-->
+                <a class="off-canvas-close" href="#"><i class="fnions fnions-close"></i></a>
+
+                <!--Off Canvas Inner Start-->
+                <div class="off-canvas-inner">
+
+                    <!--Off Canvas Navigation Start-->
+                    <nav class="off-canvas-nav">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <!--Off Canvas Navigation End-->
+
+                    <!--Off Canvas Widget Wrap Start-->
+                    <div class="off-canvas-widget-wrap">
+
+                        <!--Off Canvas Widget Start-->
+                        <div class="sidebar-widget widget-contact text-white">
+                            <ul>
+                                <li>
+                                    <span class="icon"><i class="h3 text-white fnions fnions-marker"></i></span>
+                                    <span class="info">
+                                        <strong>India Office:</strong><br>
+                                        A 807 Empire Business Hub,<br>
+                                        Nr. Science city Road, Sola,<br>
+                                        Ahmedabad 380060, India<br><br>
+                                        <strong>US Office:</strong><br>
+                                        255 Graham Ave NE, Renton, WA 98059
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="icon"><i class="h3 text-white fnions fnions-call"></i></span>
+                                    <span class="info">
+                                        <a href="tel:+919558314821">+91 9558314821</a><br>
+                                        <a href="tel:+14253954375">+1 (425) 395-4375</a>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="icon"><i class="h3 text-white fnions fnions-world"></i></span>
+                                    <span class="info">
+                                        <a href="mailto:info@beyondbooksglobal.com">info@beyondbooksglobal.com</a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Off Canvas Widget End-->
+
+                        <!--Off Canvas Widget Start-->
+                        <div class="sidebar-widget">
+                            <div class="sidebar-widget-social text-white">
+                                <a href="" target="_blank" rel="noopener" title="Facebook" class="facebook" style="font-size: 30px; margin-right: 20px;"><i class="fa fa-facebook"></i></a>
+                                <a href="" target="_blank" rel="noopener" title="Twitter" class="twitter" style="font-size: 30px; margin-right: 20px;"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.linkedin.com/in/sarthi-shah-cpa-b5aa57189/" target="_blank" rel="noopener" title="LinkedIn" class="linkedin" style="font-size: 30px; margin-right: 20px;"><i class="fa fa-linkedin"></i></a>
+                                <a href="" target="_blank" rel="noopener" title="Instagram" class="instagram" style="font-size: 30px;"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <!--Off Canvas Widget End-->
+
+                    </div>
+                    <!--Off Canvas Widget Wrap End-->
+
+                </div>
+                <!--Off Canvas Inner End-->
+
+            </div>
+        </aside>
+        <!--Off Canvas End-->
+
+        <!--Page Banner Section Start-->
+        <div class="page-banner section section-padding" style="background-image: url('assets/images/Services.webp');">
+            <div class="container text-center">
+
+                <!--Page Title Start-->
+                <div class="page-title">
+                    <h1 class="title text-white">Services</h1>
+                </div>
+                <!--Page Title End-->
+
+                <!--Page Breadcrumbs Start-->
+                <div class="page-breadcrumbs text-white">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><span>Services</span></li>
+                    </ul>
+                </div>
+                <!--Page Breadcrumbs End-->
+
+            </div>
+        </div>
+        <!--Page Banner Section End-->
+
+        <!--Service Section Start-->
+        <div class="section section-padding">
+            <div class="container">
+
+                <div class="services-timeline-wrap">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-icon"><i class="fa fa-book"></i></div>
+                            <h3>Bookkeeping Services</h3>
+                            <p>We offer clean, consistent, and fully reconciled books on a monthly or quarterly basis. Our team can manage ongoing bookkeeping, handle catch-up and clean-up tasks, and work within your preferred accounting software to keep everything audit-ready and organized.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-icon"><i class="fa fa-file-text"></i></div>
+                            <h3>Tax Preparation & Review</h3>
+                            <p>Our CPA-led team supports preparation of federal and state tax returns for individuals and businesses—including Forms 1040, 1040-NR, 1041, 1065, 1120, 1120S, 990, International Compliances forms, Payroll returns, Sales Tax returns and 1099 filing.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-icon"><i class="fa fa-line-chart"></i></div>
+                            <h3>Tax Planning Services</h3>
+                            <p>We believe in proactive planning. Our tax strategies help your clients minimize liabilities, optimize deductions, and plan for the future. We assist CPA firms and small businesses with projections, timing strategies, and tax-efficient decision-making throughout the year.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-icon"><i class="fa fa-briefcase"></i></div>
+                            <h3>CFO & Advisory Services</h3>
+                            <p>Our virtual CFO services bring financial clarity to growing businesses. From budgeting and cash flow forecasting to profitability analysis and KPI tracking, we help clients understand the story behind the numbers and make decisions that drive sustainable growth.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-icon"><i class="fa fa-university"></i></div>
+                            <h3>Company Incorporation & Structuring</h3>
+                            <p>We guide entrepreneurs through entity formation and compliance—from choosing the right structure (LLC, S-Corp, Partnership) to filing and registration. Our approach aligns legal setup with long-term tax efficiency and operational needs.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-icon"><i class="fa fa-home"></i></div>
+                            <h3>Property Management Services</h3>
+                            <p>We offer comprehensive virtual property management solutions tailored for real estate investors, landlords, and property managers. Whether managing STR, MTR, or LTR properties, our services ensure operational efficiency and tenant satisfaction.</p>
+                            
+                            <div class="property-details-timeline">
+                                <h4>Leasing & Marketing:</h4>
+                                <p>Rental listings, virtual showings, application processing, and lease prep.</p>
+                                
+                                <h4>Maintenance & Turnovers:</h4>
+                                <p>Inspections, work order management, vendor coordination, and repairs.</p>
+                                
+                                <h4>Tenant Management:</h4>
+                                <p>Rent reminders, service requests, lease renewals, and communication.</p>
+                                
+                                <h4>Operations:</h4>
+                                <p>Utility setup, Reolink monitoring, system reporting, and platform support (AppFolio, Buildium, LeadSimple).</p>
+                                
+                                <h4>Additional Support:</h4>
+                                <p>SOPs, inbox management, onboarding, and automation solutions.</p>
+                            </div>
+                            
+                            <a href="javascript:void(0)" class="read-more-btn-timeline">Read More <i class="fa fa-chevron-down"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--Service Section End-->
+
+        <!-- Footer Top Section Start -->
+        <div class="section section-padding--sm bg-dark">
+            <div class="container">
+
+                <!--Footer Widget Wrapper Start-->
+                <div class="footer-widget-wrap row justify-content-between">
+
+                    <!--Footer Widget Start-->
+                    <div class="footer-widget col-lg-4 col-md-6 col-12">
+                        <div class="inner">
+                            <div class="widget-about text-white">
+                                <img src="assets/images/logo/logo-light.png" alt="Fnions">
+                                <p style="font-size: calc(1rem + 4px); line-height: 1.6; margin-top: 20px;">Your extended financial team, offering CPA-led bookkeeping, tax, and advisory services to help businesses grow with confidence.</p>
+                                <div class="widget-social" style="margin-top: 20px;">
+                                    <a href="https://www.linkedin.com/in/sarthi-shah-cpa-b5aa57189/" target="_blank" rel="noopener" style="opacity: 0.7; font-size: 45px; margin-right: 20px;"><i class="fa fa-linkedin"></i></a>
+                                    <a href="https://wa.me/919558314821" target="_blank" rel="noopener" style="opacity: 0.7; font-size: 45px;"><i class="fa fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Footer Widget End-->
+
+                    <!--Footer Widget Start-->
+                    <div class="footer-widget col-lg-3 col-md-6 col-12" style="padding-left: 20px;">
+                        <div class="inner">
+                            <h3 class="widget-title text-white" style="padding-left: 80px;">Quick Links</h3>
+                            <div class="widget-list text-white">
+                                <ul style="font-size: calc(1rem + 5px); list-style: none; padding-left: 80px; line-height: 2;">
+                                    <li style="margin-bottom: 15px;"><a href="index.html">Home</a></li>
+                                    <li style="margin-bottom: 15px;"><a href="about.html">About</a></li>
+                                    <li style="margin-bottom: 15px;"><a href="services.html">Services</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Footer Widget End-->
+
+                    <!--Footer Widget Start-->
+                    <div class="footer-widget col-lg-4 col-md-6 col-12" style="padding-left: 20px;">
+                        <div class="inner">
+                            <h3 class="widget-title text-white" style="padding-left: 50px;">Contact Us</h3>
+                            <div class="widget-contact text-white">
+                                <ul style="list-style: none; padding-left: 50px;">
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                                        <span class="icon" style="margin-right: 15px; margin-top: 5px;"><i class="h2 fnions fnions-marker"></i></span>
+                                        <span class="info" style="line-height: 1.7;">
+                                            <strong>India Office:</strong><br>
+                                            A 807 Empire Business Hub,<br>
+                                            Nr. Science city Road, Sola,<br>
+                                            Ahmedabad 380060, India<br><br>
+                                            <strong>US Office:</strong><br>
+                                            255 Graham Ave NE, Renton, WA 98059
+                                        </span>
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                                        <span class="icon" style="margin-right: 15px; margin-top: 5px;"><i class="h2 fnions fnions-call"></i></span>
+                                        <span class="info" style="line-height: 1.8;">
+                                            <a href="tel:+919558314821">+91 9558314821</a><br>
+                                            <a href="tel:+14253954375">+1 (425) 395-4375</a>
+                                        </span>
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start;">
+                                        <span class="icon" style="margin-right: 15px; margin-top: 5px;"><i class="h2 fnions fnions-world"></i></span>
+                                        <span class="info">
+                                            <a href="mailto:info@beyondbooksglobal.com">info@beyondbooksglobal.com</a>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Footer Widget End-->
+
+                </div>
+                <!--Footer Widget Wrapper End-->
+
+            </div>
+        </div><!-- Footer Top Section End -->
+
+
+        <!-- Footer Bottom Section Start -->
+        <div class="section bg-black py-4">
+            <div class="container">
+
+                <div class="copyright text-center w-100">
+                    <p>© 2025 Beyond Books Global Solutions</p>
+                </div>
+
+            </div>
+        </div><!-- Footer Bottom Section End -->
+
+    </div>
+
+    <!-- JS Plugins
+============================================ -->
+
+    <!-- Vendor JS -->
+    <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugins JS -->
+    <script src="assets/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/js/plugins/slick.min.js"></script>
+    <script src="assets/js/plugins/ResizeSensor.js"></script>
+    <script src="assets/js/plugins/jquery.sticky-sidebar.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Timeline Animation and Read More Functionality -->
+    <script>
+        // Timeline animation on scroll
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function checkTimelineItems() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+                if (isElementInViewport(item)) {
+                    item.classList.add('is-visible');
+                }
+            });
+        }
+
+        // Check on scroll
+        window.addEventListener('scroll', checkTimelineItems);
+        
+        // Check on load
+        window.addEventListener('load', checkTimelineItems);
+
+        // Read More functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sticky Header Functionality
+            const header = document.querySelector('.header.header-sticky');
+            let lastScrollTop = 0;
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 100) {
+                    header.classList.add('is-sticky');
+                }
+                // Note: Removed the else condition to keep sticky header always visible once activated
+                
+                lastScrollTop = scrollTop;
+            });
+
+            // Timeline Read More Functionality
+            const readMoreBtn = document.querySelector('.read-more-btn-timeline');
+            
+            if (readMoreBtn) {
+                readMoreBtn.addEventListener('click', function() {
+                    const propertyDetails = document.querySelector('.property-details-timeline');
+                    
+                    if (propertyDetails.style.maxHeight) {
+                        // Content is expanded, collapse it
+                        propertyDetails.style.maxHeight = null;
+                        propertyDetails.style.opacity = 0;
+                        this.innerHTML = 'Read More <i class="fa fa-chevron-down"></i>';
+                        this.classList.remove('active');
+                    } else {
+                        // Content is collapsed, expand it
+                        propertyDetails.style.maxHeight = propertyDetails.scrollHeight + 'px';
+                        propertyDetails.style.opacity = 1;
+                        this.innerHTML = 'Read Less <i class="fa fa-chevron-up"></i>';
+                        this.classList.add('active');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
+
+<link rel="stylesheet" href="assets/css/mobile-footer.css">

@@ -1,0 +1,47 @@
+/*----------------------------------------*/
+/*  11. Funfact CSS
+/*----------------------------------------*/
+
+/*Funfact Wrapper*/
+.funfact-wrap {
+    margin-bottom: -40px;
+}
+
+/*Funfact*/
+.funfact {
+    margin-bottom: 40px;
+    & .inner {
+        display: flex;
+        justify-content: center;
+        & .icon {
+            margin-right: 20px;
+            & i {
+                display: block;
+                font-size: 50px;
+                line-height: 1;
+            }
+        }
+        & .content {
+            min-width: 110px;
+            & h2 {
+                line-height: 0.85;
+                margin-bottom: 10px;
+                &.plus {
+                    &::after {
+                        content: "+";
+                    }
+                }
+            }
+            & span {
+                display: block;
+                font-size: 14px;
+                line-height: 1;
+            }
+        }
+    }
+    // Responsive
+    @media #{$extra-small-mobile} {
+        flex: 1 0 100%;
+        max-width: 100%;
+    }
+}

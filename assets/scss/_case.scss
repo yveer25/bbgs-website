@@ -1,0 +1,285 @@
+/*----------------------------------------*/
+/*  09. Case CSS
+/*----------------------------------------*/
+.cases-wrap {
+    margin-bottom: -30px;
+}
+
+/*Case*/
+.case {
+    margin-bottom: 30px;
+    & .inner {
+        position: relative;
+        // Image 
+        & .image {
+            position: relative;
+            &::before {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                content: "";
+                background-color: $dark;
+                opacity: 0.6;
+                transition: all 0.3s ease 0s;
+                z-index: 1;
+            }
+            & img {
+                width: 100%;
+            }
+        }
+        // Content
+        & .content {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            z-index: 9;
+            padding: 20px 30px;
+            transition: all 0.3s ease 0s;
+            &.hover {
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(30px);
+                & .title {
+                    margin-bottom: 10px;
+                }
+            }
+            & .title {
+                color: $white;
+                margin-bottom: 0;
+                & a {}
+            }
+            & p {
+                color: $white;
+            }
+            & .link {
+                color: $white;
+                font-size: 14px;
+                font-weight: 600;
+                text-transform: uppercase;
+                &:hover {
+                    color: $primary;
+                }
+            }
+        }
+        // Hover
+        &:hover {
+            & .image {
+                &::before {
+                    opacity: 0.8;
+                }
+            }
+            & .content {
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-30px);
+                &.hover {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+    // Responsive
+    @media #{$large-mobile} {
+        & .inner {
+            & .content {
+                & p, & .link {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+/*Case 2*/
+.case-2 {
+    margin-bottom: 30px;
+    & .inner {
+        position: relative;
+        
+        // Image 
+        .image {
+            position: relative;
+            &::before {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                content: "";
+                background-color: $dark;
+                opacity: 0.6;
+                transition: all 0.3s ease 0s;
+                z-index: 1;
+            }
+            & img {
+                width: 100%;
+            }
+        }
+        // Content
+        .content {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            z-index: 9;
+            padding: 20px 30px;
+            transition: all 0.3s ease 0s;
+            &.hover {
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(30px);
+                & .title {
+                    margin-bottom: 10px;
+                }
+            }
+            & .title {
+                color: $white;
+                margin-bottom: 0;
+                & a {}
+            }
+            & p {
+                color: $white;
+            }
+            
+            & .link {
+                text-indent: -9999px;
+                font-size: 0;
+                line-height: 1;
+                padding: 10px 0;
+                & span {
+                    display: block;
+                    width: 30px;
+                    height: 2px;
+                    position: relative;
+                    background-color: $white;
+                    transition: all 0.3s ease 0s;
+                    &::before {
+                        position: absolute;
+                        top: 50%;
+                        right: 6px;
+                        width: 14px;
+                        height: 14px;
+                        content: "";
+                        display: block;
+                        border-top: 2px solid $white;
+                        border-right: 2px solid $white;
+                        transform: rotate(45deg) translateY(-50%);
+                        margin-top: -2px;
+                        transition: all 0.3s ease 0s;
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                }
+                &:hover {
+                }
+            }
+        }
+        
+        &:hover {
+            & .image {
+                &::before {
+                    opacity: 0.8;
+                }
+            }
+            & .content {
+                & .link {
+                    & span {
+                        width: 50px;
+                        background-color: $primary;
+                        &::before {
+                            visibility: visible;
+                            opacity: 1;
+                            border-color: $primary;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+/*Case Details (Single Case)*/
+.case-details {
+    & .inner {
+        
+        & .image, & .images {
+            position: relative;
+            margin-bottom: 30px;
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
+            & img {
+                width: 100%;
+            }
+            &.primary-image {}
+        }
+        
+        & .title {
+            margin-bottom: 20px;
+        }
+        
+        & .embed-responsive {
+            margin-bottom: 25px;
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+        
+        & .desc {
+            margin-bottom: 30px;
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
+            & p {}
+            
+            & h1, h2, h3, h4, h5, h6 {
+                margin-top: 10px;
+            }
+        }
+        
+    }
+}
+
+/*Case Details Info*/
+.case-details-info {
+    & .inner {
+        background-color: $grey;
+        padding: 50px 30px;
+        // Title
+        & .title {
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+        // Info
+        & .info {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+            & li {
+                display: flex;
+                flex-wrap: wrap;
+                margin-bottom: 15px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                & span {
+                    font-weight: 600;
+                    width: 85px;
+                    display: flex;
+                    margin-right: 15px;
+                    &::after {
+                        content: ":";
+                        margin-left: auto;
+                    }
+                }
+            }
+        }
+    }
+}

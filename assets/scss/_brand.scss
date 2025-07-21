@@ -1,0 +1,80 @@
+/*----------------------------------------*/
+/*  08. Brand CSS
+/*----------------------------------------*/
+
+/*--
+    Brand
+------------------------------------------*/
+.brand-slider {
+    & .slick-slide {
+        & > div {
+            text-align: center;
+        }
+    }
+}
+
+/*Brand Item*/
+.brand-item {
+    padding: 15px;
+    text-align: center;
+    img {
+        margin: 0 auto;
+        max-height: 80px;
+        width: auto;
+        object-fit: contain;
+        filter: grayscale(1);
+        opacity: 0.8;
+        transition: all 0.3s ease;
+        &:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+    }
+}
+
+.software-section {
+    .container {
+        @media (min-width: 992px) {
+            max-width: 90%;
+        }
+    }
+    .section-title {
+        .title, .sub {
+             color: $white;
+        }
+        @media (min-width: 992px) {
+            text-align: left;
+        }
+    }
+    .brand-slider {
+        position: relative;
+
+        .slick-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            background-color: transparent !important;
+            border: none !important;
+            font-size: 30px !important;
+            color: #FFF !important;
+            line-height: 1;
+            &:hover {
+                color: $primary !important;
+            }
+        }
+        .slick-prev {
+            left: -45px;
+        }
+        .slick-next {
+            right: -45px;
+        }
+    }
+}
+
+/*--
+    Case
+------------------------------------------*/
+.cases-wrap {
+    // ... existing code ...
+}

@@ -1,0 +1,244 @@
+/*----------------------------------------*/
+/*  15. Widget CSS
+/*----------------------------------------*/
+
+/*Widget Title*/
+.widget-title {
+    line-height: 0.8;
+    margin-bottom: 30px;
+}
+
+/*Widget Search*/
+.widget-search {
+    & form {
+        position: relative;
+        & .input-control {
+            padding-right: 60px;
+        }
+        & .btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 10px 15px;
+            display: flex;
+            & i {
+                font-size: 18px;
+                line-height: 28px;
+            }
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
+}
+
+/*Widget About*/
+.widget-about {
+    & img {
+        margin-bottom: 25px;
+    }
+    & p {
+        max-width: 330px;
+        margin-bottom: 25px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/*Footer Widget Social*/
+.widget-social {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1;
+    & a {
+        margin-right: 20px;
+        &:last-child {
+            margin-right: 0;
+        }
+        & i {
+            font-size: 18px;
+        }
+    }
+}
+
+/*Widget Buttons*/
+.widget-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    & .btn {
+        margin-bottom: 15px;
+        text-align: left;
+        min-width: 270px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/*Widget List/Menu/Link*/
+.widget-list {
+    & ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        & li {
+            margin-bottom: 20px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            & a {
+                display: block;
+                &::before {
+                    content: "\f105";
+                    font-family: $icon-fontawesome;
+                    margin-right: 10px;
+                }
+                &:hover {
+                    padding-left: 5px;
+                }
+            }
+        }
+    }
+}
+
+/*Widget Contact*/
+.widget-contact {
+    & ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        & li {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            & .icon {
+                width: 45px;
+                line-height: 1;
+                & i {
+                    display: block;
+                }
+            }
+            & .info {
+                align-self: center;
+                width: calc(100% - 45px);
+                max-width: 250px;
+                & a {
+                    clear: both;
+                    float: left;
+                }
+            }
+        }
+    }
+}
+
+/*Widget Service List*/
+.widget-service-list {
+    & ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        & li {
+            margin-bottom: 20px;
+            & a {
+                display: block;
+                font-size: 18px;
+                line-height: 30px;
+                & i {
+                    display: block;
+                    float: left;
+                    font-size: 24px;
+                    line-height: 28px;
+                    color: $primary;
+                }
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+/*Widget Blog*/
+.widget-blog {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    & li {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        & .image {
+            width: 80px;
+            & img {}
+        }
+        & .content {
+            width: calc(100% - 80px);
+            padding-left: 20px;
+            & .title {
+                & a {}
+            }
+            & .date {
+                display: block;
+                font-size: 14px;
+                line-height: 1;
+            }
+        }
+    }
+}
+
+/*Widget Tags*/
+.widget-tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -5px;
+    & a {
+        margin: 5px;
+        font-size: 14px;
+        line-height: 18px;
+        padding: 9px 15px 8px;
+        border-radius: 50px;
+        border: 1px solid $grey;
+        &:hover {
+            border-color: $primary;
+            background-color: $primary;
+            color: $white;
+        }
+    }
+}
+
+/*Widget Map*/
+.contact-map {
+    width: 100%;
+    max-width: 300px;
+    height: 270px;
+}
+.contact-map iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
+
+/*Widget Video*/
+.embed-height {
+    height: 433px;
+    @media #{$tablet-device, $large-mobile} {
+        height: 320px;
+    }
+    .embed-responsive-item {
+        height: 100%;
+        width: 100%;
+    }
+}

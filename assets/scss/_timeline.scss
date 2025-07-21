@@ -1,0 +1,147 @@
+/*----------------------------------------*/
+/*  05. Timeline CSS
+/*----------------------------------------*/
+
+/*Timeline*/
+.timeline-wrap {
+    position: relative;
+    z-index: 1;
+    &::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        height: 100%;
+        width: 10px;
+        background-color: $grey;
+        border-radius: 50px;
+        z-index: -1;
+    }
+    // Responsive
+    @media #{$tablet-device} {
+        &::before {
+            left: 25%;
+            transform: translateX(-125%);
+        }
+    }
+    @media #{$large-mobile} {
+        &::before {
+            left: 7px;
+            transform: translateX(0);
+        }
+    }
+}
+
+/*Timeline*/
+.timeline {
+    position: relative;
+    margin-bottom: 50px;
+    z-index: 1;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    &:first-child {
+        &::before {
+            background-color: $grey;
+            border: 8px solid $primary;
+        }
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        width: 24px;
+        height: 24px;
+        background-color: $primary;
+        border: 8px solid $grey;
+        border-radius: 50px;
+        z-index: 2;
+    }
+    &:nth-child(2n) {
+        & .timeline-date {
+            order: 2;
+            padding-left: 50px;
+            padding-right: 15px;
+            text-align: left;
+        }
+        & .timeline-content {
+            padding-left: 15px;
+            padding-right: 50px;
+            order: 1;
+        }
+    }
+    // Timeline Date
+    & .timeline-date {
+        padding-left: 15px;
+        padding-right: 50px;
+        align-self: center;
+        text-align: right;
+        & .date {
+            & span {}
+        }
+    }
+    // Timeline Content
+    & .timeline-content {
+        padding-left: 50px;
+        padding-right: 15px;
+        & .image {
+            margin-bottom: 20px;
+            & img {
+                width: 100%;
+            }
+        }
+        & .images {
+            margin-left: -5px;
+            margin-right: -5px;
+            & > [class*="col-"] {
+                margin-bottom: 20px;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+        & .title {
+            margin-bottom: 15px;
+        }
+        & .desc {
+            & p {}
+        }
+    }
+    // Responsive
+    @media #{$tablet-device, $large-mobile} {
+        &::before {
+            left: 25%;
+        }
+        &:nth-child(2n) {
+            & .timeline-date {
+                order: 1;
+                padding-left: 15px;
+                padding-right: 50px;
+                text-align: right;
+            }
+            & .timeline-content {
+                padding-left: 50px;
+                padding-right: 15px;
+                order: 2;
+            }
+        }
+    }
+    @media #{$large-mobile} {
+        &::before {
+            left: 14px;
+            top: 10px;
+            transform: translateX(0);
+        }
+        & .timeline-date {
+            padding-left: 60px !important;
+            padding-right: 15px !important;
+            text-align: left !important;
+            margin-bottom: 5px;
+        }
+        & .timeline-content {
+            padding-left: 60px !important;
+        }
+    }
+}

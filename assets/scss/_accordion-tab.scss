@@ -1,0 +1,85 @@
+/*--
+    - Accordion & Tab
+-----------------------------------------*/
+
+/*Accordion*/
+.accordion {
+    & .card {
+        border: 1px solid rgba(169,174,189,0.30) !important;
+        border-radius: 4px;
+        background-color: $white;
+        margin-bottom: 20px;
+        transition: all 0.3s ease 0s;
+        &:last-child {
+            margin-bottom: 0px;
+        }
+        &.open {
+            border-color: $primary !important;
+        }
+        & .card-header {
+            padding: 0;
+            background-color: transparent;
+            border: none;
+            & h2 {
+                margin: 0;
+                & button {
+                    font-size: 16px;
+                    border: none;
+                    background-color: transparent;
+                    display: block;
+                    width: 100%;
+                    text-align: left;
+                    font-weight: 400;
+                    padding: 15px 30px;
+                    position: relative;
+                    color: $heading-color;
+                    &::before, &::after {
+                        position: absolute;
+                        content: "";
+                        background-color: $heading-color;
+                        top: 50%;
+                        margin-top: -1px;
+                        width: 10px;
+                        height: 2px;
+                        right: 20px;
+                        transition: all 0.3s ease 0s;
+                    }
+                    &:hover, &:focus {
+                        text-decoration: none;
+                    }
+                    &.collapsed {
+                        &::after {
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+            }
+        }
+        & .card-body {
+            padding: 0 30px 30px;
+            & p {}
+        }
+    }
+}
+
+/*Tab*/
+.nav-tabs {
+    margin-bottom: 20px;
+    border-bottom: 2px solid $grey;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    & .nav-item {
+        margin-bottom: -2px;
+        & .nav-link {
+            border-radius: 0;
+            border: 2px solid transparent;
+            &.active {
+                border-color: $primary $grey transparent $grey;
+            }
+        }
+    }
+}
+.tab-content {
+    & .tab-pane {}
+}

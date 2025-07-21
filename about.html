@@ -1,0 +1,1639 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Beyond Books Global Solutions</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CSS
+	============================================ -->
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/fnions.css">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/animate.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/slick.css">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/mobile-footer.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        @keyframes reveal {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-reveal {
+            animation: reveal 0.8s ease-out forwards;
+        }
+        .card-container {
+            perspective: 1000px;
+        }
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+        .card-container:hover .card-3d {
+            transform: rotateY(-10deg) rotateX(10deg);
+        }
+        .card-3d-glow {
+            transition: all 0.5s ease;
+        }
+        .card-container:hover .card-3d-glow {
+            box-shadow: 0px 0px 30px rgba(99, 198, 197, 0.4);
+        }
+        .card-3d .element-3d-front {
+            transform: translateZ(40px);
+            transition: transform 0.5s ease;
+        }
+         .card-3d .element-3d-middle {
+            transform: translateZ(20px);
+            transition: transform 0.5s ease;
+        }
+
+
+        /* Logo Size and Padding */
+        .header-logo img {
+            width: 330px !important; /* Medium logo size */
+            padding: 7px 0 !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        /* Smaller Logo on Scroll */
+        .is-sticky .header-logo img {
+            width: 45% !important; /* Reduced by 55% */
+            padding: 7px 0 !important;
+        }
+        
+        /* Initial Menu Margin */
+        @media only screen and (min-width: 992px) {
+            .site-nav > ul {
+                margin-top: 4px !important;
+                transition: all 0.3s ease !important;
+            }
+        }
+        
+        /* Menu Margin Adjustment on Scroll */
+        .is-sticky .site-nav > ul {
+            margin-top: 9px !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        /* Scroll to Top Button Hover */
+        .scroll-to-top:hover {
+            background-color: #63c6c5 !important;
+            color: #ffffff !important;
+        }
+        
+        /* Header Menu Top Margin - Desktop Only */
+        @media only screen and (min-width: 992px) {
+            .site-nav > ul {
+                margin-top: 22px !important;
+            }
+        }
+
+        /* Menu Styling */
+        .site-nav > ul > li > a,
+        .off-canvas-nav > ul > li > a {
+            transition: color 0.3s ease !important;
+        }
+
+        .site-nav > ul > li > a:hover,
+        .off-canvas-nav > ul > li > a:hover {
+            color: #63c6c5 !important;
+        }
+
+        /* Active state for Home page */
+        body.home .site-nav > ul > li > a[href="index.html"],
+        body.home .off-canvas-nav > ul > li > a[href="index.html"] {
+            color: #63c6c5 !important;
+        }
+
+        /* Active state for About page */
+        body.about .site-nav > ul > li > a[href="about.html"],
+        body.about .off-canvas-nav > ul > li > a[href="about.html"] {
+            color: #63c6c5 !important;
+        }
+
+        /* Active state for Services page */
+        body.services .site-nav > ul > li > a[href="services.html"],
+        body.services .off-canvas-nav > ul > li > a[href="services.html"] {
+            color: #63c6c5 !important;
+        }
+
+        /* Active state for Contact page */
+        body.contact .site-nav > ul > li > a[href="contact.html"],
+        body.contact .off-canvas-nav > ul > li > a[href="contact.html"] {
+            color: #63c6c5 !important;
+        }
+
+        /* Search and Menu Icons Hover */
+        .header-toggle a.toggle {
+            transition: all 0.3s ease !important;
+        }
+        
+        .header-toggle a.toggle i {
+            transition: color 0.3s ease !important;
+        }
+        
+        .header-toggle a.toggle:hover i.fnions-search {
+            color: #63c6c5 !important;
+        }
+        
+        .header-toggle a.toggle:hover i.fnions-close {
+            color: #63c6c5 !important;
+        }
+
+        /* Hamburger Menu Hover */
+        .header-toggle .toggle-off-canvas .toggle {
+            transition: all 0.3s ease !important;
+        }
+        
+        .header-toggle .toggle-off-canvas .toggle .bar {
+            transition: background-color 0.3s ease !important;
+        }
+        
+        .header-toggle .toggle-off-canvas .toggle:hover .bar {
+            background-color: #63c6c5 !important;
+        }
+
+        /* Footer and Mega Menu Hover Styles */
+        /* Links */
+        .footer-widget a:hover,
+        .off-canvas-nav a:hover,
+        .widget-list a:hover {
+            color: #63c6c5 !important;
+            transition: all 0.3s ease;
+        }
+
+        /* Contact Info - Phone Numbers and Email Only */
+        .widget-contact a[href^="tel:"]:hover,
+        .widget-contact a[href^="mailto:"]:hover,
+        .off-canvas-nav .widget-contact a[href^="tel:"]:hover,
+        .off-canvas-nav .widget-contact a[href^="mailto:"]:hover {
+            color: #63c6c5 !important;
+            transition: all 0.3s ease;
+        }
+
+        /* Social Icons - Footer */
+        .footer-widget .widget-social {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-widget .widget-social a {
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .footer-widget .widget-social a i {
+            font-size: 30px !important;
+        }
+
+        /* Mobile social media icons size increase */
+        @media (max-width: 767px) {
+            .footer-widget .widget-social a i {
+                font-size: 48px !important;
+            }
+        }
+
+        .footer-widget .widget-social a:hover {
+            opacity: 1;
+            color: #63c6c5 !important;
+        }
+
+        /* Social Icons - Mega Menu */
+        .off-canvas-nav .widget-social a {
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .off-canvas-nav .widget-social a:hover {
+            opacity: 1;
+            color: #63c6c5 !important;
+        }
+
+        /* LinkedIn Icon Always Visible */
+        .footer-widget .widget-social a[href*="linkedin"],
+        .off-canvas-nav .widget-social a[href*="linkedin"] {
+            opacity: 1;
+        }
+
+        /* Navigation Links */
+        .widget-list ul li a:hover {
+            color: #63c6c5 !important;
+            padding-left: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Social Media Icons - Mega Menu */
+        .sidebar-widget-social a {
+            transition: all 0.3s ease !important;
+        }
+        
+        .sidebar-widget-social a:hover {
+            color: #63c6c5 !important;
+            transform: translateY(-3px);
+        }
+        
+        .sidebar-widget-social a.facebook,
+        .sidebar-widget-social a.twitter,
+        .sidebar-widget-social a.instagram {
+            opacity: 0.5;
+        }
+        
+        .sidebar-widget-social a.linkedin {
+            opacity: 1;
+        }
+        
+        .sidebar-widget-social a:hover {
+            opacity: 1;
+        }
+
+        /* Leadership Team Cards */
+        .leadership-team-wrap {
+            margin-bottom: -30px;
+            perspective: 1000px;
+        }
+        
+        .leadership-team {
+            margin-bottom: 30px;
+            transform-style: preserve-3d;
+        }
+        
+        .leadership-team .inner {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06),
+                inset 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        
+        .leadership-team .inner:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #63c6c5 0%, #4ab5b4 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            z-index: 1;
+        }
+        
+        .leadership-team .inner:after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(225deg, rgba(99, 198, 197, 0.4) 0%, rgba(74, 181, 180, 0.1) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        
+        .leadership-team .inner:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 
+                0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04),
+                inset 0 0 20px rgba(255, 255, 255, 0.8);
+            border-color: rgba(99, 198, 197, 0.4);
+        }
+        
+        .leadership-team .inner:hover:before {
+            transform: scaleX(1);
+        }
+        
+        .leadership-team .content {
+            text-align: left;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .leadership-team .content .name {
+            font-size: 27px;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        
+        .leadership-team .content .title {
+            display: block;
+            font-size: 16px;
+            color: #63c6c5;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: left;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .leadership-team .description {
+            margin-top: 15px;
+            text-align: left;
+            color: #555;
+            line-height: 1.6;
+            font-size: 19px;
+        }
+        
+        .leadership-team .hidden-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            opacity: 0;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .leadership-team .read-more-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: #63c6c5;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: rgba(99, 198, 197, 0.1);
+            border: 1px solid rgba(99, 198, 197, 0.2);
+        }
+        
+        .leadership-team .read-more-btn:hover {
+            color: #fff;
+            background: #63c6c5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 198, 197, 0.3);
+        }
+        
+        .leadership-team .read-more-btn i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .leadership-team .read-more-btn.active i {
+            transform: rotate(180deg);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 991px) {
+            .leadership-team .inner {
+                padding: 25px;
+            }
+            
+            .leadership-team .content .name {
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .leadership-team .inner {
+                padding: 20px;
+            }
+            
+            .leadership-team .content .name {
+                font-size: 22px;
+            }
+            
+            .leadership-team .content .title {
+                font-size: 14px;
+            }
+            
+            .leadership-team .description {
+                font-size: 16px;
+            }
+        }
+
+        /* Why Choose Us Section Styles */
+        .feature .inner {
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+        
+        .feature .inner:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature .icon {
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .feature .icon i {
+            transition: transform 0.3s ease;
+        }
+        
+        .feature .inner:hover .icon i {
+            transform: scale(1.2);
+        }
+        
+        .feature .title {
+            margin-bottom: 15px;
+        }
+        
+        .feature .desc {
+            line-height: 1.6;
+        }
+
+        /* Footer container width fix for about page */
+        .section.section-padding--sm.bg-dark > .container {
+            max-width: 1200px !important;
+            width: 100% !important;
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+        .footer-widget-wrap {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        .footer-widget {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        /* Do NOT override .widget-title, .widget-social, .footer-widget font-size, font-weight, or alignment here. */
+
+        @media only screen and (max-width: 767px) {
+            .widget-title {
+                font-size: 18px !important;
+            }
+        }
+
+        /* Enhanced Security Items Styling */
+        .security-item {
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(99, 198, 197, 0.15);
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .security-item:nth-child(1) { animation-delay: 0.1s; }
+        .security-item:nth-child(2) { animation-delay: 0.2s; }
+        .security-item:nth-child(3) { animation-delay: 0.3s; }
+        .security-item:nth-child(4) { animation-delay: 0.4s; }
+        .security-item:nth-child(5) { animation-delay: 0.5s; }
+        .security-item:nth-child(6) { animation-delay: 0.6s; }
+        .security-item:nth-child(7) { animation-delay: 0.7s; }
+        .security-item:nth-child(8) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Left to Right Flow Effect */
+        .ripple-effect {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+            transform: translateX(0);
+            pointer-events: none;
+            transition: transform 0.6s ease;
+        }
+
+        /* Hover Effects */
+        .security-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(99, 198, 197, 0.25);
+        }
+
+        .security-item.primary-bg:hover {
+            background: #4db8b7 !important;
+            box-shadow: 0 8px 25px rgba(99, 198, 197, 0.4);
+            border-left-color: #3da5a4 !important;
+        }
+
+        .security-item.primary-bg:hover h4 {
+            color: white !important;
+        }
+
+        .security-item.primary-bg:hover .ripple-effect {
+            transform: translateX(200%);
+        }
+
+        .security-item.secondary-bg:hover {
+            background: #e8f7f7 !important;
+            border-color: #4db8b7 !important;
+            border-left-color: #4db8b7 !important;
+            box-shadow: 0 8px 25px rgba(99, 198, 197, 0.3);
+        }
+
+        .security-item.secondary-bg:hover h4 {
+            color: #2d4a4a !important;
+        }
+
+        .security-item.secondary-bg:hover .ripple-effect {
+            background: linear-gradient(90deg, rgba(99, 198, 197, 0.3) 0%, rgba(99, 198, 197, 0.15) 50%, transparent 100%);
+            transform: translateX(200%);
+        }
+
+        /* Pulse Animation for Primary Items */
+        .security-item.primary-bg {
+            animation: fadeInUp 0.6s ease forwards, pulse 4s infinite 2s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                box-shadow: 0 4px 15px rgba(99, 198, 197, 0.15);
+            }
+            50% { 
+                box-shadow: 0 6px 20px rgba(99, 198, 197, 0.25);
+            }
+        }
+
+        /* Underline Animation */
+        .underline-animation {
+            animation: expandWidth 1s ease-out 0.5s forwards;
+            width: 0 !important;
+        }
+
+        @keyframes expandWidth {
+            to { width: 100px !important; }
+        }
+
+        /* Professional Box Styling */
+        .security-item {
+            box-shadow: 0 2px 8px rgba(99, 198, 197, 0.1);
+        }
+
+        .security-item.primary-bg {
+            box-shadow: 0 3px 12px rgba(99, 198, 197, 0.2);
+        }
+
+        /* Responsive Enhancements */
+        @media (max-width: 991px) {
+            .security-item {
+                margin-bottom: 12px !important;
+                padding: 20px 25px !important;
+            }
+            .security-item h4 {
+                font-size: 18px !important;
+            }
+
+            /* Force alternating colors for stacked security items */
+            .it-infrastructure-section .col-lg-6 .security-item {
+                border: none !important;
+            }
+            .it-infrastructure-section .col-lg-6 .security-item:nth-child(odd) {
+                background: #4db8b7 !important;
+                border-left: 4px solid #3da5a4 !important;
+            }
+            .it-infrastructure-section .col-lg-6 .security-item:nth-child(odd) h4 {
+                color: white !important;
+            }
+            .it-infrastructure-section .col-lg-6 .security-item:nth-child(even) {
+                background: #f8fffe !important;
+                border: 1px solid #4db8b7 !important;
+                border-left: 4px solid #4db8b7 !important;
+            }
+            .it-infrastructure-section .col-lg-6 .security-item:nth-child(even) h4 {
+                color: #2d4a4a !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .security-item {
+                margin-bottom: 10px !important;
+                padding: 18px 20px !important;
+            }
+            .security-item h4 {
+                font-size: 16px !important;
+            }
+            .about-heading .title {
+                font-size: 32px !important;
+            }
+            .underline-animation {
+                width: 60px !important;
+            }
+            @keyframes expandWidth {
+                to { width: 60px !important; }
+            }
+        }
+
+        /* Loading Animation */
+        .security-item:hover {
+            animation-play-state: paused;
+        }
+
+        /* Professional Border Effect */
+        .security-item:hover {
+            border-left-width: 6px !important;
+        }
+
+        /* Add responsive styles */
+        @media (max-width: 767px) {
+            .page-title .title {
+                font-size: 30px !important;
+            }
+        }
+
+        .team-section,
+        .why-choose-us-section,
+        .it-infrastructure-section {
+            padding-left: 45px;
+            padding-right: 45px;
+        }
+
+        .it-infrastructure-section {
+            padding-top: 60px !important;
+            padding-bottom: 80px !important;
+        }
+
+        @media (max-width: 767px) {
+            .team-section,
+            .why-choose-us-section,
+            .it-infrastructure-section {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+
+        /* Mobile Header Icon Alignment */
+        @media (max-width: 991px) {
+            .header-bottom .row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-bottom-left {
+                padding-bottom: 15px;
+            }
+            .header-bottom-right {
+                width: 100%;
+            }
+            .header-toggle-buttons {
+                display: flex;
+                justify-content: flex-end;
+                padding-right: 15px;
+            }
+        }
+        
+        /* Sticky Header Mobile Layout */
+        @media (max-width: 991px) {
+            .header.header-sticky.is-sticky {
+                position: fixed !important;
+                top: 0 !important;
+                width: 100% !important;
+                z-index: 9999 !important;
+                background: #fff !important;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .header.header-sticky.is-sticky .header-bottom {
+                padding: 12px 0 !important;
+            }
+            
+            .header.header-sticky.is-sticky .header-bottom .row {
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+            }
+            
+            .header.header-sticky.is-sticky .header-bottom-left {
+                padding-bottom: 0 !important;
+                flex: 0 0 auto !important;
+            }
+            
+            .header.header-sticky.is-sticky .header-logo img {
+                width: 200px !important;
+                height: auto !important;
+                max-height: 55px !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .header.header-sticky.is-sticky .header-bottom-right {
+                width: auto !important;
+                flex: 0 0 auto !important;
+            }
+            
+            .header.header-sticky.is-sticky .header-toggle-buttons {
+                display: flex !important;
+                align-items: center !important;
+                gap: 15px !important;
+                padding-right: 0 !important;
+                margin: 0 !important;
+            }
+            
+            .header.header-sticky.is-sticky .header-toggle {
+                margin: 0 !important;
+            }
+        }
+
+        /* Footer Mobile View Improvements */
+        @media (max-width: 767px) {
+            /* 1. Increase width of company description text - better utilization of space */
+            .footer-widget .widget-about p {
+                padding-right: 0 !important;
+                margin-right: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                text-align: justify !important;
+                word-wrap: break-word !important;
+                hyphens: auto !important;
+            }
+            
+            /* Ensure the first footer widget uses full available width */
+            .footer-widget:first-child {
+                padding-right: 10px !important;
+            }
+            
+            .footer-widget:first-child .inner {
+                padding-right: 0 !important;
+                margin-right: 0 !important;
+            }
+            
+            /* 2. Add margin top to Quick Links heading */
+            .footer-widget .widget-title {
+                margin-top: 15px !important;
+            }
+            
+            /* 3. Increase Quick Links heading size */
+            .footer-widget .widget-title {
+                font-size: calc(1.25rem + 10px) !important;
+            }
+            
+            /* 4. Increase navigation links size */
+            .footer-widget .widget-list ul li a {
+                font-size: calc(1rem + 3px) !important;
+            }
+            
+            /* 5. Increase Contact Us heading size */
+            .footer-widget .widget-title {
+                font-size: calc(1.25rem + 10px) !important;
+            }
+            
+            /* 6. Increase Contact Us content sizes */
+            .footer-widget .widget-contact ul li .icon i {
+                font-size: calc(1.5rem + 3px) !important;
+            }
+            
+            .footer-widget .widget-contact ul li .info {
+                font-size: calc(1rem + 3px) !important;
+                line-height: 1.6 !important;
+            }
+            
+            .footer-widget .widget-contact ul li .info a {
+                font-size: calc(1rem + 3px) !important;
+            }
+            
+            .footer-widget .widget-contact ul li .info strong {
+                font-size: calc(1rem + 4px) !important;
+            }
+            
+            /* 7. Remove left padding from Quick Links and Contact Us columns */
+            .footer-widget[style*="padding-left"] {
+                padding-left: 0 !important;
+            }
+            
+            .footer-widget h3[style*="padding-left"] {
+                padding-left: 0 !important;
+            }
+            
+            .footer-widget .widget-list[style*="padding-left"] {
+                padding-left: 0 !important;
+            }
+            
+            .footer-widget .widget-list ul[style*="padding-left"] {
+                padding-left: 0 !important;
+            }
+            
+            .footer-widget .widget-contact[style*="padding-left"] {
+                padding-left: 0 !important;
+            }
+            
+            .footer-widget .widget-contact ul[style*="padding-left"] {
+                padding-left: 0 !important;
+            }
+            
+                         /* Add 10% left padding to Quick Links and Contact Us columns */
+             .footer-widget .widget-list,
+             .footer-widget .widget-contact {
+                 padding-left: 10% !important;
+             }
+             
+             /* Improve social media icons spacing like Contact page */
+             .footer-widget .widget-social {
+                 display: flex !important;
+                 gap: 20px !important;
+             }
+             
+             .footer-widget .widget-social a {
+                 width: 60px !important;
+                 height: 60px !important;
+                 border-radius: 50% !important;
+                 display: flex !important;
+                 align-items: center !important;
+                 justify-content: center !important;
+                 text-decoration: none !important;
+                 transition: all 0.3s ease !important;
+                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+             }
+             
+             .footer-widget .widget-social a:hover {
+                 opacity: 1 !important;
+                 transform: translateY(-5px) !important;
+                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+             }
+             
+             .footer-widget .widget-social a i {
+                 font-size: 48px !important;
+             }
+             
+                           /* Add 15px left padding to Quick Links and Contact Us headings */
+              .footer-widget:nth-child(2) .widget-title,
+              .footer-widget:nth-child(3) .widget-title {
+                  padding-left: 15px !important;
+              }
+              
+              /* Increase footer navigation links size in second column (Quick Links) on About page only */
+              .footer-widget:nth-child(2) .widget-list ul li a {
+                  font-size: calc(1rem + 8px) !important;
+              }
+              
+                             /* Mobile Mega Menu Improvements */
+               .off-canvas-widget-wrap {
+                   margin-top: 20px !important;
+                   padding-top: 0 !important;
+               }
+               
+               /* Increase menu text size */
+               .off-canvas-nav ul li a {
+                   font-size: calc(1rem + 6px) !important;
+               }
+               
+               /* Fix email cropping issue */
+               .off-canvas-widget-wrap .sidebar-widget.widget-contact ul li {
+                   display: flex !important;
+                   align-items: flex-start !important;
+                   word-wrap: break-word !important;
+                   overflow-wrap: break-word !important;
+               }
+               
+               .off-canvas-widget-wrap .sidebar-widget.widget-contact ul li .info {
+                   flex: 1 !important;
+                   min-width: 0 !important;
+                   word-break: break-all !important;
+                   overflow-wrap: break-word !important;
+               }
+               
+               /* Increase contact details visibility in mobile menu */
+               .off-canvas-widget-wrap .sidebar-widget.widget-contact ul li .icon i {
+                   font-size: calc(1.5rem + 5px) !important;
+               }
+               
+               .off-canvas-widget-wrap .sidebar-widget.widget-contact ul li .info {
+                   font-size: calc(1rem + 4px) !important;
+                   line-height: 1.6 !important;
+               }
+               
+               .off-canvas-widget-wrap .sidebar-widget.widget-contact ul li .info strong {
+                   font-size: calc(1rem + 5px) !important;
+                   font-weight: 600 !important;
+               }
+               
+               .off-canvas-widget-wrap .sidebar-widget.widget-contact ul li .info a {
+                   font-size: calc(1rem + 4px) !important;
+               }
+               
+               /* Reduce social media icons gap and improve visibility */
+               .off-canvas-widget-wrap .sidebar-widget-social {
+                   display: flex !important;
+                   gap: 10px !important;
+               }
+               
+               .off-canvas-widget-wrap .sidebar-widget-social a {
+                   font-size: calc(30px + 5px) !important;
+                   margin-right: 0 !important;
+               }
+               
+               /* About Page Mobile Content Improvements */
+               
+               /* Hero section About Us main heading size increase */
+               .page-title .title {
+                   font-size: calc(30px + 7px) !important;
+               }
+               
+               /* About Us main heading size increase - additional 10px */
+               .about-content-2 .section-title h2,
+               .about-section .section-title h2 {
+                   font-size: calc(2.5rem + 15px) !important;
+               }
+               
+               /* Fix blurry text and increase sizes for three cards (Leadership Team) - Same as Home Page */
+               .leadership-team {
+                   transform-style: initial !important;
+               }
+               
+               .team-item-2 .content,
+               .leadership-team .inner {
+                   padding: 20px !important;
+                   background: #ffffff !important;
+                   backdrop-filter: none !important;
+                   -webkit-backdrop-filter: none !important;
+                   -webkit-font-smoothing: antialiased !important;
+                   -moz-osx-font-smoothing: grayscale !important;
+                   text-rendering: optimizeLegibility !important;
+               }
+               
+               .leadership-team .inner:hover {
+                   transform: translateY(-5px) !important;
+               }
+               
+               .team-item-2 .content h4,
+               .leadership-team .content .name {
+                   font-size: 28px !important;
+                   -webkit-font-smoothing: antialiased !important;
+                   -moz-osx-font-smoothing: grayscale !important;
+               }
+               
+               .team-item-2 .content span,
+               .leadership-team .content .title {
+                   font-size: 20px !important;
+                   -webkit-font-smoothing: antialiased !important;
+                   -moz-osx-font-smoothing: grayscale !important;
+               }
+               
+               .team-item-2 .content p,
+               .leadership-team .description {
+                   font-size: 22px !important;
+                   -webkit-font-smoothing: antialiased !important;
+                   -moz-osx-font-smoothing: grayscale !important;
+               }
+               
+               /* Why Choose Us section - The Beyond Books Advantage heading size increase */
+               .why-choose-us-section .about-heading h2.title {
+                   font-size: calc(49px + 4px) !important;
+               }
+               
+               /* IT Infrastructure section heading size increase */
+               .it-infrastructure-section .about-heading h2.title {
+                   font-size: calc(49px + 4px) !important;
+               }
+               
+               /* IT Infrastructure content boxes improvements */
+               .security-item {
+                   margin-bottom: 15px !important;
+                   padding: 25px 30px !important;
+               }
+               
+               .security-item h4 {
+                   font-size: 23px !important;
+               }
+               
+               .security-item p {
+                   font-size: 23px !important;
+               }
+               
+               /* Specific fix for Licensed support software box spacing - First item in right column */
+               .col-lg-6:nth-child(2) .security-item:first-child {
+                   margin-top: -22px !important;
+               }
+          }
+
+        /* Hero Section Heading Size - Desktop Only */
+        @media only screen and (min-width: 992px) {
+            .page-banner .title {
+                font-size: calc(2.75rem + 4px) !important;
+            }
+        }
+
+        /* Breadcrumb Home Link Hover Color */
+        .page-breadcrumbs ul li a:hover {
+            color: #63c6c5 !important;
+        }
+
+        /* Search Popup Close Icon Hover Color */
+        .search-close:hover i.fnions-close {
+            color: #63c6c5 !important;
+        }
+        .search-close:hover {
+            color: #63c6c5 !important;
+        }
+    </style>
+
+</head>
+
+<body class="about">
+
+    <div class="main-wrapper">
+
+        <!--Header Section Start-->
+        <header class="header header-sticky section">
+
+            <!--Header Bottom Start-->
+            <div class="header-bottom section">
+                <div class="container-fluid">
+
+                    <!--Header Bottom Inner Start-->
+                    <div class="row">
+
+                        <!--Header Logo (Left) Start-->
+                        <div class="col-auto header-logo header-bottom-left me-auto">
+                            <a href="index.html">
+                                <span class="logo-light"><img src="assets/images/logo/logo-light.png" alt="Fnions Logo"></span>
+                                <span class="logo-dark"><img src="assets/images/logo/logo.png" alt="Fnions Logo"></span>
+                            </a>
+                        </div>
+                        <!--Header Logo (Left) End-->
+
+                        <!--Header Right Start-->
+                        <div class="col-auto header-bottom-navigation header-bottom-middle d-none d-lg-block position-relative">
+
+                            <!--Site Main Menu Start-->
+                            <div class="site-main-navigation">
+                                <nav class="site-nav">
+                                    <ul>
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="services.html">Services</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!--Site Main Menu End-->
+
+                            <!--Site Mobile Menu Start-->
+                            <div class="site-mobile-navigation d-block d-lg-none">
+                            </div>
+                            <!--Site Mobile Menu End-->
+
+                        </div>
+                        <!--Header Right End-->
+
+                        <!--Header Right Start-->
+                        <div class="col-auto header-bottom-right">
+
+                            <!--Header Toggle Buttons Start-->
+                            <div class="header-toggle-buttons">
+
+                                <div class="header-toggle toggle-off-canvas d-lg-none"><a class="toggle" href="#off-canvas" data-target="off-canvas"><span class="bar bar-1"></span><span class="bar bar-2"></span><span class="bar bar-3"></span></a></div>
+
+                            </div>
+                            <!--Header Toggle Buttons End-->
+
+                        </div>
+                        <!--Header Right End-->
+
+                    </div>
+                    <!--Header Bottom Inner End-->
+
+                </div>
+            </div>
+            <!--Header Bottom End-->
+
+        </header>
+        <!--Header Section End-->
+
+
+
+
+
+        <!--Off Canvas Start-->
+        <aside id="off-canvas" class="off-canvas">
+            <div class="off-canvas-wrap">
+
+                <!--Off Canvas Close Button-->
+                <a class="off-canvas-close" href="#"><i class="fnions fnions-close"></i></a>
+
+                <!--Off Canvas Inner Start-->
+                <div class="off-canvas-inner">
+
+                    <!--Off Canvas Navigation Start-->
+                    <nav class="off-canvas-nav">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <!--Off Canvas Navigation End-->
+
+                    <!--Off Canvas Widget Wrap Start-->
+                    <div class="off-canvas-widget-wrap">
+
+                        <!--Off Canvas Widget Start-->
+                        <div class="sidebar-widget widget-contact text-white">
+                            <ul>
+                                <li>
+                                    <span class="icon"><i class="h3 text-white fnions fnions-marker"></i></span>
+                                    <span class="info">
+                                        <strong>India Office:</strong><br>
+                                        A 807 Empire Business Hub,<br>
+                                        Nr. Science city Road, Sola,<br>
+                                        Ahmedabad 380060, India<br><br>
+                                        <strong>US Office:</strong><br>
+                                        255 Graham Ave NE, Renton, WA 98059
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="icon"><i class="h3 text-white fnions fnions-call"></i></span>
+                                    <span class="info">
+                                        <a href="tel:+919558314821">+91 9558314821</a><br>
+                                        <a href="tel:+14253954375">+1 (425) 395-4375</a>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="icon"><i class="h3 text-white fnions fnions-world"></i></span>
+                                    <span class="info">
+                                        <a href="mailto:info@beyondbooksglobal.com">info@beyondbooksglobal.com</a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Off Canvas Widget End-->
+
+                        <!--Off Canvas Widget Start-->
+                        <div class="sidebar-widget">
+                            <div class="sidebar-widget-social text-white">
+                                <a href="" target="_blank" rel="noopener" title="Facebook" class="facebook" style="font-size: 30px; margin-right: 20px;"><i class="fa fa-facebook"></i></a>
+                                <a href="" target="_blank" rel="noopener" title="Twitter" class="twitter" style="font-size: 30px; margin-right: 20px;"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.linkedin.com/in/sarthi-shah-cpa-b5aa57189/" target="_blank" rel="noopener" title="LinkedIn" class="linkedin" style="font-size: 30px; margin-right: 20px;"><i class="fa fa-linkedin"></i></a>
+                                <a href="" target="_blank" rel="noopener" title="Instagram" class="instagram" style="font-size: 30px;"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <!--Off Canvas Widget End-->
+
+                    </div>
+                    <!--Off Canvas Widget Wrap End-->
+
+                </div>
+                <!--Off Canvas Inner End-->
+
+            </div>
+        </aside>
+        <!--Off Canvas End-->
+
+        <!--Page Banner Section Start-->
+        <div class="page-banner section section-padding" style="background-image: url('assets/images/About Us.webp');">
+            <div class="container text-center">
+
+                <!--Page Title Start-->
+                <div class="page-title">
+                    <h1 class="title text-white" style="font-size: 40px;">About Us</h1>
+                </div>
+                <!--Page Title End-->
+
+                <!--Page Breadcrumbs Start-->
+                <div class="page-breadcrumbs text-white">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><span>About Us</span></li>
+                    </ul>
+                </div>
+                <!--Page Breadcrumbs End-->
+
+            </div>
+        </div>
+        <!--Page Banner Section End-->
+
+        <!--Leadership Team Section Start-->
+        <div class="section section-padding team-section">
+            <div class="container">
+
+                <!--Team Wrapper Start-->
+                <div class="leadership-team-wrap row">
+
+                    <!--Team Start-->
+                    <div class="leadership-team col-lg-4 col-md-6 col-12">
+                        <div class="inner">
+                            <div class="content">
+                                <h3 class="name">Ajit Shah, CA</h3>
+                                <span class="title">MENTOR</span>
+                                <div class="description">
+                                    <p>With over three decades of professional experience, Ajit Shah is a seasoned Chartered Accountant who has built a reputation for excellence in accounting, auditing, taxation, litigation support, and strategic advisory services.</p>
+                                    <div class="hidden-content">
+                                        <p>His vast knowledge spans multiple industries, and he has successfully represented clients before Indian tax authorities in complex, high-stakes matters—achieving favorable resolutions through sound strategy and deep subject-matter expertise.</p>
+                                        <br>
+                                        <p>As the founding force behind our India operations, Ajit has played a pivotal role in shaping a practice rooted in trust, technical proficiency, and client-centric service. Today, he serves as a mentor and visionary leader, actively working to replicate this legacy in the firm's expanding U.S. operations.</p>
+                                    </div>
+                                    <a href="javascript:void(0)" class="read-more-btn">Read More <i class="fa fa-chevron-down"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Team End-->
+
+                    <!--Team Start-->
+                    <div class="leadership-team col-lg-4 col-md-6 col-12">
+                        <div class="inner">
+                            <div class="content">
+                                <h3 class="name">Sarthi Shah, CA, CPA</h3>
+                                <span class="title">PARTNER</span>
+                                <div class="description">
+                                    <p>Sarthi Shah is a dual-qualified Chartered Accountant and licensed U.S. CPA, bringing over five years of experience in U.S. accounting, tax compliance, and financial reporting.</p>
+                                    <div class="hidden-content">
+                                        <p>He has worked with Big 4 and mid-sized accounting firms, where he specialized in serving small businesses, high-net-worth individuals, and corporate entities with diverse and complex tax requirements.</p>
+                                        <br>
+                                        <p>With hands-on expertise in day-to-day bookkeeping, financial close processes, tax return preparation, and payroll administration, Sarthi is known for his technical precision and proactive problem-solving approach. As a key driver of our U.S. practice, he is committed to building scalable processes, maintaining service excellence, and nurturing strong client relationships through transparent communication and timely delivery.</p>
+                                    </div>
+                                    <a href="javascript:void(0)" class="read-more-btn">Read More <i class="fa fa-chevron-down"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Team End-->
+
+                    <!--Team Start-->
+                    <div class="leadership-team col-lg-4 col-md-6 col-12">
+                        <div class="inner">
+                            <div class="content">
+                                <h3 class="name">Nidhi Shah, CA</h3>
+                                <span class="title">PARTNER</span>
+                                <div class="description">
+                                    <p>Nidhi Shah is a Chartered Accountant with more than five years of specialized experience in U.S. accounting and taxation.</p>
+                                    <div class="hidden-content">
+                                        <p>She has served as a trusted resource for CPA firms through her work at offshore offices of top-tier U.S. accounting firms, gaining deep exposure to federal and state-level tax structures and compliance systems.</p>
+                                        <br>
+                                        <p>Her professional journey includes managing intricate tax filings for individuals, partnerships, and corporations, along with full-cycle accounting and bookkeeping services. Nidhi is also a strong believer in operational excellence—she plays a central role in team training, workflow optimization, and quality assurance. Her commitment to continuous learning, team leadership, and high service standards makes her an integral pillar of our firm's client success framework.</p>
+                                    </div>
+                                    <a href="javascript:void(0)" class="read-more-btn">Read More <i class="fa fa-chevron-down"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Team End-->
+
+                </div>
+                <!--Team Wrapper End-->
+
+            </div>
+        </div>
+        <!--Leadership Team Section End-->
+
+        <!--Why us Section Start-->
+        <div class="section section-padding why-choose-us-section" style="background-color: #1a1a1a;">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-heading" style="text-align: left;">
+                        <h4 class="sub" style="color: #63c6c5; font-size: 30px;">Why <span style="color: white;">Choose Us?</span></h4>
+                        <h2 class="title h1 text-white mb-5" style="font-size: 49px;">The Beyond Books <span style="color: #63c6c5;">Advantage</span></h2>
+                    </div>
+
+                    <!--Feature Wrapper Start-->
+                    <div class="feature-wrap row justify-content-center">
+
+                        <!--Feature Start-->
+                        <div class="feature col-lg-3 col-sm-6 col-12">
+                            <div class="inner" style="background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; transition: all 0.3s ease; height: 100%;">
+                                <span class="icon" style="color: #63c6c5; font-size: 40px;"><i class="fa fa-puzzle-piece"></i></span>
+                                <div class="content">
+                                    <h4 class="title text-white" style="font-size: 28px;">Scalable Solutions</h4>
+                                    <p class="desc" style="color: #ccc; font-size: 20px;">We deliver flexible services that grow with your firm's evolving needs.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Feature End-->
+
+                        <!--Feature Start-->
+                        <div class="feature col-lg-3 col-sm-6 col-12">
+                            <div class="inner" style="background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; transition: all 0.3s ease; height: 100%;">
+                                <span class="icon" style="color: #63c6c5; font-size: 40px;"><i class="fa fa-shield"></i></span>
+                                <div class="content">
+                                    <h4 class="title text-white" style="font-size: 28px;">Expert-Led Support</h4>
+                                    <p class="desc" style="color: #ccc; font-size: 20px;">CPA-led expert teams ensure your firm gets accurate and consistently reliable results.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Feature End-->
+
+                        <!--Feature Start-->
+                        <div class="feature col-lg-3 col-sm-6 col-12">
+                            <div class="inner" style="background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; transition: all 0.3s ease; height: 100%;">
+                                <span class="icon" style="color: #63c6c5; font-size: 40px;"><i class="fa fa-cogs"></i></span>
+                                <div class="content">
+                                    <h4 class="title text-white" style="font-size: 28px;">Back-Office Efficiency</h4>
+                                    <p class="desc" style="color: #ccc; font-size: 20px;">We manage the operational load so you can focus on client growth.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Feature End-->
+
+                        <!--Feature Start-->
+                        <div class="feature col-lg-3 col-sm-6 col-12">
+                            <div class="inner" style="background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px; transition: all 0.3s ease; height: 100%;">
+                                <span class="icon" style="color: #63c6c5; font-size: 40px;"><i class="fa fa-lightbulb-o"></i></span>
+                                <div class="content">
+                                    <h4 class="title text-white" style="font-size: 28px;">Focus on Advisory</h4>
+                                    <p class="desc" style="color: #ccc; font-size: 20px;">We strategically free up your time to focus on high-value client advisory services.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Feature End-->
+
+                    </div>
+                    <!--Feature Wrapper End-->
+
+                </div>
+            </div>
+        </div>
+        <!--Why us Section End-->
+
+        <!--IT Infrastructure Section Start-->
+        <div class="section section-padding it-infrastructure-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-heading text-center mb-5">
+                        <h2 class="title h1" style="font-size: 49px;">IT Infrastructure & Security <span style="color: #63c6c5;">Measures</span></h2>
+                        <div class="underline-animation" style="width: 100px; height: 4px; background: linear-gradient(90deg, #63c6c5, #4db8b7); margin: 20px auto; border-radius: 2px;"></div>
+                    </div>
+
+                    <!--Security Measures Wrapper Start-->
+                    <div class="row g-4">
+                        <!-- Left Column -->
+                        <div class="col-lg-6">
+                            <!-- Item 1 -->
+                            <div class="security-item primary-bg" style="background: #4db8b7; color: white; padding: 25px 30px; margin-bottom: 15px; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #3da5a4;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: white;">Desktop and other technology with latest configuration</h4>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div class="security-item secondary-bg" style="background: #f8fffe; color: #2d4a4a; padding: 25px 30px; margin-bottom: 15px; border: 1px solid #4db8b7; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #4db8b7;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: #2d4a4a;">VPN protection while working on client server</h4>
+                            </div>
+
+                            <!-- Item 3 -->
+                            <div class="security-item primary-bg" style="background: #4db8b7; color: white; padding: 25px 30px; margin-bottom: 15px; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #3da5a4;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: white;">Disabled usage of external plug-in devices</h4>
+                            </div>
+
+                            <!-- Item 4 -->
+                            <div class="security-item secondary-bg" style="background: #f8fffe; color: #2d4a4a; padding: 25px 30px; margin-bottom: 15px; border: 1px solid #4db8b7; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #4db8b7;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: #2d4a4a;">100% on-site functioning. No WFH.</h4>
+                            </div>
+
+                            <!-- Item 5 -->
+                            <div class="security-item primary-bg" style="background: #4db8b7; color: white; padding: 25px 30px; margin-bottom: 15px; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #3da5a4;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: white;">Centralized control</h4>
+                            </div>
+
+                            <!-- Item 6 -->
+                            <div class="security-item secondary-bg" style="background: #f8fffe; color: #2d4a4a; padding: 25px 30px; margin-bottom: 15px; border: 1px solid #4db8b7; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #4db8b7;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: #2d4a4a;">Functional access to client data</h4>
+                            </div>
+
+                            <!-- Item 7 -->
+                            <div class="security-item primary-bg" style="background: #4db8b7; color: white; padding: 25px 30px; margin-bottom: 15px; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #3da5a4;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: white;">Regular security updates</h4>
+                            </div>
+
+                            <!-- Item 15 (Bottom of left column) -->
+                            <div class="security-item secondary-bg" style="background: #f8fffe; color: #2d4a4a; padding: 25px 30px; margin-bottom: 15px; border: 1px solid #4db8b7; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #4db8b7;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: #2d4a4a;">Internet browsing restricted by firewall</h4>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="col-lg-6">
+                            <!-- Item 8 -->
+                            <div class="security-item secondary-bg" style="background: #f8fffe; color: #2d4a4a; padding: 25px 30px; margin-bottom: 15px; border: 1px solid #4db8b7; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #4db8b7;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: #2d4a4a;">Licensed support software</h4>
+                            </div>
+
+                            <!-- Item 9 -->
+                            <div class="security-item primary-bg" style="background: #4db8b7; color: white; padding: 25px 30px; margin-bottom: 15px; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #3da5a4;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: white;">Secured workstations with password protection</h4>
+                            </div>
+
+                            <!-- Item 10 -->
+                            <div class="security-item secondary-bg" style="background: #f8fffe; color: #2d4a4a; padding: 25px 30px; margin-bottom: 15px; border: 1px solid #4db8b7; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #4db8b7;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: #2d4a4a;">Regular system audit</h4>
+                            </div>
+
+                            <!-- Item 11 -->
+                            <div class="security-item primary-bg" style="background: #4db8b7; color: white; padding: 25px 30px; margin-bottom: 15px; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #3da5a4;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: white;">Restriction on printing of documents</h4>
+                            </div>
+
+                            <!-- Item 12 -->
+                            <div class="security-item secondary-bg" style="background: #f8fffe; color: #2d4a4a; padding: 25px 30px; margin-bottom: 15px; border: 1px solid #4db8b7; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #4db8b7;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: #2d4a4a;">Multiple LAN networks</h4>
+                            </div>
+
+                            <!-- Item 13 -->
+                            <div class="security-item primary-bg" style="background: #4db8b7; color: white; padding: 25px 30px; margin-bottom: 15px; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #3da5a4;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: white;">Restricted access to harmful websites</h4>
+                            </div>
+
+                            <!-- Item 14 -->
+                            <div class="security-item secondary-bg" style="background: #f8fffe; color: #2d4a4a; padding: 25px 30px; margin-bottom: 15px; border: 1px solid #4db8b7; transition: all 0.4s ease; position: relative; overflow: hidden; border-left: 4px solid #4db8b7;">
+                                <div class="ripple-effect"></div>
+                                <h4 style="margin: 0; font-size: 22px; font-weight: 600; color: #2d4a4a;">Automatic backup to prevent data loss</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Security Measures Wrapper End-->
+                </div>
+            </div>
+        </div>
+        <!--IT Infrastructure Section End-->
+
+        <!-- Footer Top Section Start -->
+        <div class="section section-padding--sm bg-dark">
+            <div class="container">
+
+                <!--Footer Widget Wrapper Start-->
+                <div class="footer-widget-wrap row justify-content-between">
+
+                    <!--Footer Widget Start-->
+                    <div class="footer-widget col-lg-4 col-md-6 col-12">
+                        <div class="inner">
+                            <div class="widget-about text-white">
+                                <img src="assets/images/logo/logo-light.png" alt="Fnions">
+                                <p style="font-size: calc(1rem + 4px); line-height: 1.6; margin-top: 20px;">Your extended financial team, offering CPA-led bookkeeping, tax, and advisory services to help businesses grow with confidence.</p>
+                                <div class="widget-social" style="margin-top: 20px;">
+                                    <a href="https://www.linkedin.com/in/sarthi-shah-cpa-b5aa57189/" target="_blank" rel="noopener" style="opacity: 0.7; font-size: 45px; margin-right: 20px;"><i class="fa fa-linkedin"></i></a>
+                                    <a href="https://wa.me/919558314821" target="_blank" rel="noopener" style="opacity: 0.7; font-size: 45px;"><i class="fa fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Footer Widget End-->
+
+                    <!--Footer Widget Start-->
+                    <div class="footer-widget col-lg-3 col-md-6 col-12" style="padding-left: 20px;">
+                        <div class="inner">
+                            <h3 class="widget-title text-white" style="padding-left: 80px; font-size: 24px;">Quick Links</h3>
+                            <div class="widget-list text-white">
+                                <ul style="font-size: calc(1rem + 5px); list-style: none; padding-left: 80px; line-height: 2;">
+                                    <li style="margin-bottom: 15px;"><a href="index.html">Home</a></li>
+                                    <li style="margin-bottom: 15px;"><a href="about.html">About</a></li>
+                                    <li style="margin-bottom: 15px;"><a href="services.html">Services</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Footer Widget End-->
+
+                    <!--Footer Widget Start-->
+                    <div class="footer-widget col-lg-4 col-md-6 col-12" style="padding-left: 0;">
+                        <div class="inner">
+                            <h3 class="widget-title text-white" style="padding-left: 50px; font-size: 24px;">Contact Us</h3>
+                            <div class="widget-contact text-white">
+                                <ul style="list-style: none; padding-left: 50px;">
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                                        <span class="icon" style="min-width: 32px; display: flex; justify-content: flex-start; margin-right: 15px; margin-top: 5px;"><i class="h2 fnions fnions-marker"></i></span>
+                                        <span class="info" style="line-height: 1.7;">
+                                            <strong>India Office:</strong><br>
+                                            A 807 Empire Business Hub,<br>
+                                            Nr. Science city Road, Sola,<br>
+                                            Ahmedabad 380060, India<br><br>
+                                            <strong>US Office:</strong><br>
+                                            255 Graham Ave NE, Renton, WA 98059
+                                        </span>
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                                        <span class="icon" style="min-width: 32px; display: flex; justify-content: flex-start; margin-right: 15px; margin-top: 5px;"><i class="h2 fnions fnions-call"></i></span>
+                                        <span class="info" style="line-height: 1.8;">
+                                            <a href="tel:+919558314821">+91 9558314821</a><br>
+                                            <a href="tel:+14253954375">+1 (425) 395-4375</a>
+                                        </span>
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start;">
+                                        <span class="icon" style="min-width: 32px; display: flex; justify-content: flex-start; margin-right: 15px; margin-top: 5px;"><i class="h2 fnions fnions-world"></i></span>
+                                        <span class="info">
+                                            <a href="mailto:info@beyondbooksglobal.com">info@beyondbooksglobal.com</a>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Footer Widget End-->
+
+                </div>
+                <!--Footer Widget Wrapper End-->
+
+            </div>
+        </div><!-- Footer Top Section End -->
+
+
+        <!-- Footer Bottom Section Start -->
+        <div class="section bg-black py-4">
+            <div class="container">
+
+                <div class="copyright text-center w-100">
+                    <p>© 2025 Beyond Books Global Solutions</p>
+                </div>
+
+            </div>
+        </div><!-- Footer Bottom Section End -->
+
+    </div>
+
+    <!-- JS Plugins
+============================================ -->
+
+    <!-- Vendor JS -->
+    <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugins JS -->
+    <script src="assets/js/plugins/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/js/plugins/slick.min.js"></script>
+    <script src="assets/js/plugins/ResizeSensor.js"></script>
+    <script src="assets/js/plugins/jquery.sticky-sidebar.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Sticky Header and Leadership Team Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sticky Header Functionality
+            const header = document.querySelector('.header.header-sticky');
+            let lastScrollTop = 0;
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 100) {
+                    header.classList.add('is-sticky');
+                }
+                // Note: Removed the else condition to keep sticky header always visible once activated
+                
+                lastScrollTop = scrollTop;
+            });
+
+            // Leadership Team Read More Functionality
+            const readMoreButtons = document.querySelectorAll('.read-more-btn');
+            
+            readMoreButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const hiddenContent = this.parentElement.querySelector('.hidden-content');
+                    const icon = this.querySelector('i');
+                    
+                    if (hiddenContent.style.maxHeight) {
+                        hiddenContent.style.maxHeight = null;
+                        hiddenContent.style.opacity = '0';
+                        icon.style.transform = 'rotate(0deg)';
+                        this.classList.remove('active');
+                    } else {
+                        hiddenContent.style.maxHeight = hiddenContent.scrollHeight + 'px';
+                        hiddenContent.style.opacity = '1';
+                        icon.style.transform = 'rotate(180deg)';
+                        this.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html></html>

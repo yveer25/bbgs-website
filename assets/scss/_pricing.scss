@@ -1,0 +1,71 @@
+/*----------------------------------------*/
+/*  13. Pricing CSS
+/*----------------------------------------*/
+
+/*Pricing Wrapper*/
+.pricing-wrap {
+    margin-bottom: -30px;
+}
+
+/*Pricing*/
+.pricing {
+    margin-bottom: 30px;
+    & .inner {
+        border: 1px solid $grey;
+        text-align: center;
+        
+        // Head
+        & .head {
+            border-bottom: 1px solid $grey;
+            padding: 30px;
+            & .title {
+                line-height: 1;
+                margin-bottom: 15px;
+            }
+            & .price {
+                line-height: 1;
+                display: flex;
+                justify-content: center;
+                & .currency {
+                    font-size: 14px;
+                    align-self: flex-start;
+                    color: $body-color;
+                }
+                & .amount {
+                    font-size: 40px;
+                    line-height: 0.8;
+                }
+                & .period {
+                    font-size: 14px;
+                    text-transform: capitalize;
+                    align-self: flex-end;
+                    color: $body-color;
+                }
+            }
+        }
+        
+        // Body
+        & .body {
+            padding: 50px 30px;
+            & ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                & li {
+                    margin-bottom: 10px;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+        
+        // Foot
+        & .foot {
+            border-top: 1px solid $grey;
+            padding: 30px 15px;
+            & .btn {}
+        }
+        
+    }
+}

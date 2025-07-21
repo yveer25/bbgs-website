@@ -1,0 +1,104 @@
+/*----------------------------------------*/
+/*  10. Testimonial CSS
+/*----------------------------------------*/
+
+/*Testimonial Wrapper*/
+.testimonial-wrap {}
+
+/*Testimonial*/
+.testimonial {
+    .inner {
+        text-align: center;
+        & img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        & p {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        & .name {}
+        & .title {
+            display: block;
+            line-height: 1;
+            font-size: 12px;
+        }
+    }
+}
+
+/*Testimonial Slider 2*/
+.testimonial-slider-2 {
+    margin-top: -15px;
+    & .slick-list {
+        padding-top: 15px;
+    }
+}
+
+/*Testimonial 2*/
+.testimonial-2 {
+    .inner {
+        & .content {
+            padding: 30px;
+            background-color: $white;
+            box-shadow: 0 0 15px rgba($black, 0.1);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+            &::before {
+                content: "\f10d";
+                font-family: $icon-fontawesome;
+                position: absolute;
+                left: 15px;
+                top: -5px;
+                color: $primary;
+                opacity: 0.1;
+                font-size: 80px;
+                line-height: 1;
+                z-index: -1;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 34px;
+                width: 24px;
+                height: 24px;
+                background-color: $white;
+                box-shadow: 5px 5px 5px rgba($black, 0.02);
+                transform: rotate(45deg);
+                margin-top: -12px;
+                z-index: 2;
+            }
+            & p {
+                font-size: 18px;
+                font-style: italic;
+            }
+        }
+        & .author {
+            display: flex;
+            padding-left: 15px;
+            & .image {
+                margin-right: 15px;
+                & img {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                }
+            }
+            & .info {
+                align-self: center;
+                & .name {}
+                & .title {
+                    display: block;
+                    line-height: 1;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

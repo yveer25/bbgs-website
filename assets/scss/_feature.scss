@@ -1,0 +1,34 @@
+/*----------------------------------------*/
+/*  07. Feature CSS
+/*----------------------------------------*/
+
+/*Feature Wrapper*/
+.feature-wrap {
+    margin-bottom: -30px;
+}
+
+/*Feature*/
+.feature {
+    margin-bottom: 30px;
+    & .inner {
+        // Icon 
+        & .icon {
+            display: block;
+            color: $primary;
+            margin-bottom: 15px;
+            & i {
+                font-size: 40px;
+            }
+        }
+        // Content
+        & .content {
+            & .title {
+                margin-bottom: 10px;
+            }
+            & .desc {
+                margin: 0;
+                max-width: 350px;
+            }
+        }
+    }
+}
