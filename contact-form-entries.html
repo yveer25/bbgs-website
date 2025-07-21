@@ -268,6 +268,10 @@
             background: #218838;
         }
 
+        .entries-actions {
+            margin-bottom: 40px;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .entries-header {
@@ -295,6 +299,81 @@
             .entry-card {
                 padding: 20px;
             }
+        }
+
+        /* Password Protection Modal */
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+        }
+
+        .password-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .password-content h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .password-content p {
+            color: #6c757d;
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #63c6c5;
+        }
+
+        .password-btn {
+            background: #63c6c5;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .password-btn:hover {
+            background: #52a5a4;
+            transform: translateY(-2px);
+        }
+
+        .password-error {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: none;
         }
 
         /* Confirmation Modal */
@@ -366,7 +445,18 @@
 
 <body class="contact-entries">
 
-    <div class="main-wrapper">
+    <!-- Password Protection Modal -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-content">
+            <h2>🔒 Admin Access Required</h2>
+            <p>Please enter the password to access the Contact Form Entries dashboard.</p>
+            <input type="password" id="passwordInput" class="password-input" placeholder="Enter password" autocomplete="off">
+            <button class="password-btn" onclick="checkPassword()">Access Dashboard</button>
+            <div class="password-error" id="passwordError">Incorrect password. Please try again.</div>
+        </div>
+    </div>
+
+    <div class="main-wrapper" id="mainContent" style="display: none;">
 
         <!--Header Section Start-->
         <header class="header header-sticky section">
@@ -672,6 +762,58 @@
 
     </div>
 
+    <!-- Password Protection Script -->
+    <script>
+        // Password protection
+        const CORRECT_PASSWORD = 'thegreatmindset';
+        
+        function checkPassword() {
+            const passwordInput = document.getElementById('passwordInput');
+            const passwordError = document.getElementById('passwordError');
+            const passwordModal = document.getElementById('passwordModal');
+            const mainContent = document.getElementById('mainContent');
+            
+            if (passwordInput.value === CORRECT_PASSWORD) {
+                // Hide password modal and show main content
+                passwordModal.style.display = 'none';
+                mainContent.style.display = 'block';
+                
+                // Store authentication in sessionStorage
+                sessionStorage.setItem('adminAuthenticated', 'true');
+                
+                // Load entries after successful authentication
+                loadEntries();
+            } else {
+                // Show error message
+                passwordError.style.display = 'block';
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        }
+        
+        // Check if already authenticated
+        function checkAuthentication() {
+            if (sessionStorage.getItem('adminAuthenticated') === 'true') {
+                document.getElementById('passwordModal').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+                loadEntries();
+            }
+        }
+        
+        // Handle Enter key in password input
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('passwordInput');
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkPassword();
+                }
+            });
+            
+            // Check authentication on page load
+            checkAuthentication();
+        });
+    </script>
+
     <!-- JS Plugins
 ============================================ -->
 
@@ -707,8 +849,7 @@
                 lastScrollTop = scrollTop;
             });
 
-            // Load and display entries
-            loadEntries();
+            // Note: loadEntries() will be called after password authentication
         });
 
         // Load entries from localStorage
