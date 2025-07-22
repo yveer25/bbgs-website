@@ -85,6 +85,45 @@
             color: #63c6c5 !important;
         }
 
+        /* Footer Hover Colors */
+        .footer-widget a:hover,
+        .off-canvas-nav a:hover,
+        .widget-list a:hover {
+            color: #63c6c5 !important;
+            transition: all 0.3s ease;
+        }
+
+        /* Contact Info - Phone Numbers and Email Only */
+        .widget-contact a[href^="tel:"]:hover,
+        .widget-contact a[href^="mailto:"]:hover,
+        .off-canvas-nav .widget-contact a[href^="tel:"]:hover,
+        .off-canvas-nav .widget-contact a[href^="mailto:"]:hover {
+            color: #63c6c5 !important;
+            transition: all 0.3s ease;
+        }
+
+        /* Social Icons - Footer */
+        .footer-widget .widget-social a {
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .footer-widget .widget-social a:hover {
+            opacity: 1;
+            color: #63c6c5 !important;
+        }
+
+        /* Social Icons - Mega Menu */
+        .off-canvas-nav .widget-social a {
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .off-canvas-nav .widget-social a:hover {
+            opacity: 1;
+            color: #63c6c5 !important;
+        }
+
         /* Contact Form Entries Styles */
         .entries-container {
             background: #f8f9fa;
@@ -270,6 +309,42 @@
 
         .entries-actions {
             margin-bottom: 40px;
+        }
+
+        /* Checkbox Styles */
+        .entry-checkbox {
+            width: 18px;
+            height: 18px;
+            margin-right: 15px;
+            cursor: pointer;
+            accent-color: #63c6c5;
+        }
+
+        .entry-checkbox:checked {
+            background-color: #63c6c5;
+            border-color: #63c6c5;
+        }
+
+        /* Export Selected Button */
+        .export-selected-btn {
+            background: #17a2b8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            display: none;
+        }
+
+        .export-selected-btn:hover {
+            background: #138496;
+        }
+
+        .export-selected-btn.show {
+            display: inline-block;
         }
 
         /* Tab Navigation Styles */
@@ -910,6 +985,9 @@
                         <button class="export-btn" onclick="exportEntries()">
                             <i class="fa fa-download"></i> Export to CSV
                         </button>
+                        <button class="export-selected-btn" id="exportSelectedBtn" onclick="exportSelectedEntries()">
+                            <i class="fa fa-download"></i> Export Selected to CSV
+                        </button>
                         <button class="clear-all-btn" onclick="showClearAllModal()">
                             <i class="fa fa-trash"></i> Clear All
                         </button>
@@ -1142,6 +1220,7 @@
         let currentTab = 'callback';
         let callbackEntries = [];
         let letsTalkEntries = [];
+        let selectedEntries = new Set();
 
         // Load all entries from localStorage
         function loadAllEntries() {
@@ -1190,6 +1269,7 @@
                     <div class="entry-card">
                         <div class="entry-header">
                             <div class="entry-info">
+                                <input type="checkbox" class="entry-checkbox" id="callback-${index}" onchange="toggleEntrySelection('callback-${index}', ${index})">
                                 <h4>${entry.name}</h4>
                                 <div class="entry-date">${formatDate(entry.timestamp)}</div>
                             </div>
@@ -1239,6 +1319,7 @@
                     <div class="entry-card">
                         <div class="entry-header">
                             <div class="entry-info">
+                                <input type="checkbox" class="entry-checkbox" id="letsTalk-${index}" onchange="toggleEntrySelection('letsTalk-${index}', ${index})">
                                 <h4>${entry.name}</h4>
                                 <div class="entry-date">${formatDate(entry.timestamp)}</div>
                             </div>
@@ -1283,6 +1364,10 @@
         function switchTab(tabName) {
             currentTab = tabName;
             
+            // Clear selected entries when switching tabs
+            selectedEntries.clear();
+            updateExportSelectedButton();
+            
             // Update tab buttons
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
@@ -1297,6 +1382,90 @@
             
             // Load entries for current tab
             loadCurrentTabEntries();
+        }
+
+        // Toggle entry selection
+        function toggleEntrySelection(checkboxId, index) {
+            const checkbox = document.getElementById(checkboxId);
+            const entryKey = `${currentTab}-${index}`;
+            
+            if (checkbox.checked) {
+                selectedEntries.add(entryKey);
+            } else {
+                selectedEntries.delete(entryKey);
+            }
+            
+            updateExportSelectedButton();
+        }
+
+        // Update export selected button visibility
+        function updateExportSelectedButton() {
+            const exportSelectedBtn = document.getElementById('exportSelectedBtn');
+            if (selectedEntries.size > 0) {
+                exportSelectedBtn.classList.add('show');
+            } else {
+                exportSelectedBtn.classList.remove('show');
+            }
+        }
+
+        // Export selected entries to CSV
+        function exportSelectedEntries() {
+            if (selectedEntries.size === 0) {
+                alert('Please select at least one entry to export.');
+                return;
+            }
+
+            const currentEntries = currentTab === 'callback' ? callbackEntries : letsTalkEntries;
+            const formName = currentTab === 'callback' ? 'Request a Call Back' : 'Let\'s Talk';
+            
+            // Filter selected entries
+            const selectedEntriesArray = [];
+            selectedEntries.forEach(entryKey => {
+                const [tabType, index] = entryKey.split('-');
+                if (tabType === currentTab) {
+                    selectedEntriesArray.push(currentEntries[parseInt(index)]);
+                }
+            });
+
+            // Create CSV content based on form type
+            let headers, csvContent;
+            
+            if (currentTab === 'callback') {
+                headers = ['Name', 'Email', 'Phone', 'Date'];
+                csvContent = [
+                    headers.join(','),
+                    ...selectedEntriesArray.map(entry => [
+                        `"${entry.name}"`,
+                        `"${entry.email}"`,
+                        `"${entry.phone || ''}"`,
+                        `"${formatDate(entry.timestamp)}"`
+                    ].join(','))
+                ].join('\n');
+            } else {
+                headers = ['Name', 'Company', 'Email', 'Phone', 'Message', 'Date'];
+                csvContent = [
+                    headers.join(','),
+                    ...selectedEntriesArray.map(entry => [
+                        `"${entry.name}"`,
+                        `"${entry.company || ''}"`,
+                        `"${entry.email}"`,
+                        `"${entry.phone || ''}"`,
+                        `"${entry.message || ''}"`,
+                        `"${formatDate(entry.timestamp)}"`
+                    ].join(','))
+                ].join('\n');
+            }
+
+            // Create and download file
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `${formName.toLowerCase().replace(/\s+/g, '-')}-selected-entries-${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         // Format date for display
@@ -1318,6 +1487,10 @@
                 'Delete Callback Entry',
                 'Are you sure you want to delete this callback entry? This action cannot be undone.',
                 () => {
+                    // Remove from selected entries if it was selected
+                    selectedEntries.delete(`callback-${index}`);
+                    updateExportSelectedButton();
+                    
                     callbackEntries.splice(index, 1);
                     localStorage.setItem('callbackFormEntries', JSON.stringify(callbackEntries));
                     loadAllEntries();
@@ -1332,6 +1505,10 @@
                 'Delete Let\'s Talk Entry',
                 'Are you sure you want to delete this Let\'s Talk entry? This action cannot be undone.',
                 () => {
+                    // Remove from selected entries if it was selected
+                    selectedEntries.delete(`letsTalk-${index}`);
+                    updateExportSelectedButton();
+                    
                     letsTalkEntries.splice(index, 1);
                     localStorage.setItem('letsTalkFormEntries', JSON.stringify(letsTalkEntries));
                     loadAllEntries();
@@ -1349,6 +1526,10 @@
                 `Clear All ${formName} Entries`,
                 `Are you sure you want to delete all ${currentEntries.length} ${formName} entries? This action cannot be undone.`,
                 () => {
+                    // Clear all selected entries for current tab
+                    selectedEntries.clear();
+                    updateExportSelectedButton();
+                    
                     if (currentTab === 'callback') {
                         localStorage.removeItem('callbackFormEntries');
                         callbackEntries = [];
