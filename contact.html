@@ -1347,6 +1347,9 @@
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
+    
+    <!-- Form Handler -->
+    <script src="assets/js/form-handler.js"></script>
 
     <!-- Sticky Header Script -->
     <script>
@@ -1543,34 +1546,52 @@
                     }
 
                     if (isValid) {
-                        // Save form entry to localStorage
-                        const formEntry = {
+                        // Prepare form data
+                        const formData = {
                             name: contactNameField.value.trim(),
                             company: companyNameField.value.trim(),
                             email: contactEmailField.value.trim(),
                             phone: contactPhoneField.value.trim(),
                             message: messageField.value.trim(),
-                            timestamp: new Date().toISOString()
+                            formType: 'letsTalk',
+                            ip: '', // Will be filled by server
+                            userAgent: navigator.userAgent
                         };
 
-                        // Get existing entries or create empty array
-                        const existingEntries = JSON.parse(localStorage.getItem('letsTalkFormEntries') || '[]');
-                        existingEntries.push(formEntry);
-                        localStorage.setItem('letsTalkFormEntries', JSON.stringify(existingEntries));
+                        // Show loading state
+                        const submitBtn = document.querySelector('#letsTalkForm button[type="submit"]');
+                        const originalText = submitBtn.textContent;
+                        submitBtn.textContent = 'Submitting...';
+                        submitBtn.disabled = true;
 
-                        // Form is valid - hide form and show success message
-                        const formContainer = document.getElementById('letsTalkFormContainer');
-                        const successMessage = document.getElementById('letsTalkSuccessMessage');
-                        
-                        // Hide form with smooth transition
-                        formContainer.classList.add('contact-form-hidden');
-                        
-                        // Show success message after form is hidden
-                        setTimeout(() => {
-                            formContainer.style.display = 'none';
-                            successMessage.style.display = 'block';
-                            successMessage.classList.add('contact-success-message-show');
-                        }, 300);
+                        // Submit to Google Sheets and save locally
+                        handleFormSubmission(formData).then(result => {
+                            // Reset button
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+
+                            // Form is valid - hide form and show success message
+                            const formContainer = document.getElementById('letsTalkFormContainer');
+                            const successMessage = document.getElementById('letsTalkSuccessMessage');
+                            
+                            // Hide form with smooth transition
+                            formContainer.classList.add('contact-form-hidden');
+                            
+                            // Show success message after form is hidden
+                            setTimeout(() => {
+                                formContainer.style.display = 'none';
+                                successMessage.style.display = 'block';
+                                successMessage.classList.add('contact-success-message-show');
+                            }, 300);
+                        }).catch(error => {
+                            // Reset button
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                            
+                            // Show error message
+                            alert('There was an error submitting the form. Please try again.');
+                            console.error('Form submission error:', error);
+                        });
                     }
                 });
             }
