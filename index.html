@@ -2687,6 +2687,20 @@
                 }
 
                 if (isValid) {
+                    // Save form entry to localStorage
+                    const formEntry = {
+                        name: nameField.value.trim(),
+                        email: emailField.value.trim(),
+                        phone: phoneField.value.trim(),
+                        formType: 'callback',
+                        timestamp: new Date().toISOString()
+                    };
+
+                    // Get existing entries or create empty array
+                    const existingEntries = JSON.parse(localStorage.getItem('callbackFormEntries') || '[]');
+                    existingEntries.push(formEntry);
+                    localStorage.setItem('callbackFormEntries', JSON.stringify(existingEntries));
+
                     // Form is valid - hide form and show success message
                     const formContainer = document.getElementById('formContainer');
                     const successMessage = document.getElementById('successMessage');

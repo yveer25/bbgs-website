@@ -1554,9 +1554,9 @@
                         };
 
                         // Get existing entries or create empty array
-                        const existingEntries = JSON.parse(localStorage.getItem('contactFormEntries') || '[]');
+                        const existingEntries = JSON.parse(localStorage.getItem('letsTalkFormEntries') || '[]');
                         existingEntries.push(formEntry);
-                        localStorage.setItem('contactFormEntries', JSON.stringify(existingEntries));
+                        localStorage.setItem('letsTalkFormEntries', JSON.stringify(existingEntries));
 
                         // Form is valid - hide form and show success message
                         const formContainer = document.getElementById('letsTalkFormContainer');
